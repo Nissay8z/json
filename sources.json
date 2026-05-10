@@ -1,13 +1,158 @@
 {
   "films_series": [
     {
-      "nom": "1Shows",
-      "url": "https://www.1shows.nl",
+      "nom": "Yesmovies",
+      "url": "https://ww1.yesmovies.ag",
       "categorie": "films_series"
     },
     {
-      "nom": "Cineo",
-      "url": "https://cineo.online/",
+      "nom": "Willow",
+      "url": "https://willow.arlen.icu",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Soap2Day",
+      "url": "https://ww25.soap2day.day",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Cinemabz",
+      "url": "https://cinema.bz",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Xprime",
+      "url": "https://xprime.stream",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Vfstream",
+      "url": "https://films.vfstream.eu",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Wiflix",
+      "url": "https://flemmix.rent",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "1Movies",
+      "url": "https://1movies.bz",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Wooflix",
+      "url": "https://wooflix.io",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Xonaflix",
+      "url": "https://xonaflix.io",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Leizy",
+      "url": "https://leizy.fr",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Toflix",
+      "url": "https://toflix.space",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Noctaflix",
+      "url": "https://noctaflix.lol",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Plutonflix",
+      "url": "https://plutonflix.stream",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Yoyomovies",
+      "url": "https://yoyomovies.net",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Hydraflix",
+      "url": "https://www.hydraflix.cc",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Empire Streaming",
+      "url": "https://empire-streaming-officiel.org",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "24Drama",
+      "url": "https://watchflix.to",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Top Stream",
+      "url": "https://top-stream.space",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Streamingcommunityz",
+      "url": "https://streamingunity.tv",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Yassflix",
+      "url": "https://yassflix.net",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "1Jour1Film",
+      "url": "https://1jour1film0126b.site",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Popcine",
+      "url": "https://popcine.buzz",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Filmoflix",
+      "url": "https://filmoflix.bz",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Hdstream",
+      "url": "https://www.hdstream.top",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Moovbob",
+      "url": "https://moovbob.com/",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Hyloplus",
+      "url": "https://hyloplus.duckdns.org/",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Nova Stream",
+      "url": "https://novastream.top",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Spenflix",
+      "url": "https://watch.spencerdevs.xyz",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Flixter",
+      "url": "https://flixter.ac",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Minazuki",
+      "url": "https://minazuki.space",
       "categorie": "films_series"
     },
     {
@@ -16,8 +161,78 @@
       "categorie": "films_series"
     },
     {
+      "nom": "Purstream",
+      "url": "https://purstream.to",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Tmovie",
+      "url": "https://tmovie.tv",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Serialgo",
+      "url": "https://serialgo.tv",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Cpasmal",
+      "url": "https://www.cpasmal.rip",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Xalaflix",
+      "url": "https://xalaflix.fr/r%C3%A9pertoire.html",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Seko Stream",
+      "url": "https://seko-stream.com",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "1Shows",
+      "url": "https://www.1shows.nl",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Cinego",
+      "url": "https://cinego.co",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Movix",
+      "url": "https://movix.rodeo",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Citysonic",
+      "url": "https://citysonic.tv",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Fmovies",
+      "url": "https://fmovies.ps/home",
+      "categorie": "films_series"
+    },
+    {
       "nom": "Nakios",
       "url": "https://nakios.site",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Watchseries",
+      "url": "https://watchseries.bar",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Bogge",
+      "url": "https://bogge.tv",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "French Stream",
+      "url": "https://fstream.org",
       "categorie": "films_series"
     },
     {
@@ -31,108 +246,18 @@
       "categorie": "films_series"
     },
     {
-      "nom": "Watchtv",
-      "url": "https://www.cyberghostvpn.com/offer/RechercheStream_43eupgk",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Plutonflix",
-      "url": "https://plutonflix.stream",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Leizy",
-      "url": "https://leizy.fr",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "1Jour1Film",
-      "url": "https://1jour1film0126b.site",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Vidjoy",
-      "url": "https://vidjoy.pro",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Hydraflix",
-      "url": "https://www.hydraflix.cc",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Filmoflix",
-      "url": "https://filmoflix.bz",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "French Stream",
-      "url": "https://fstream.org",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Allmovieland",
-      "url": "https://allmovieland.io",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Streamingcommunityz",
-      "url": "https://streamingunity.tv",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Coflix",
-      "url": "https://coflix.observer",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Weflix",
-      "url": "https://Weflix.to",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Wooflix",
-      "url": "https://wooflix.io",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Wow Films",
-      "url": "https://wowfilms0126.site",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Movix",
-      "url": "https://movix.rodeo",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Frflix",
-      "url": "https://frflix.mov",
-      "categorie": "films_series"
-    },
-    {
       "nom": "Moviepire",
       "url": "https://moviepire.sc",
       "categorie": "films_series"
     },
     {
-      "nom": "Cinepulse",
-      "url": "https://cinepulse.cx",
+      "nom": "Wookafr",
+      "url": "https://wookafr.bid",
       "categorie": "films_series"
     },
     {
-      "nom": "Popcine",
-      "url": "https://popcine.buzz",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Fmovies",
-      "url": "https://fmovies.ps/home",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Vexmovies",
-      "url": "https://www.vexmovies.biz.id",
+      "nom": "Moviesjoytv",
+      "url": "http://ww1.moviesjoy.to",
       "categorie": "films_series"
     },
     {
@@ -141,73 +266,63 @@
       "categorie": "films_series"
     },
     {
-      "nom": "Xalaflix",
-      "url": "https://xalaflix.fr/r%C3%A9pertoire.html",
+      "nom": "Senpai Stream",
+      "url": "https://senpai-stream.casa",
       "categorie": "films_series"
     },
     {
-      "nom": "Cinemerveilles",
-      "url": "https://cinemerveilles.fr",
+      "nom": "Weflix",
+      "url": "https://Weflix.to",
       "categorie": "films_series"
     },
     {
-      "nom": "Bogge",
-      "url": "https://bogge.tv",
+      "nom": "Streamflix",
+      "url": "https://streamflix.fr",
       "categorie": "films_series"
     },
     {
-      "nom": "Hyloplus",
-      "url": "https://hyloplus.duckdns.org/",
+      "nom": "Cinepulse",
+      "url": "https://cinepulse.cx",
       "categorie": "films_series"
     },
     {
-      "nom": "Ztvplus",
-      "url": "https://ztvplus.site",
+      "nom": "123Moviesfree",
+      "url": "https://ww8.123moviesfree.net",
       "categorie": "films_series"
     },
     {
-      "nom": "Vfstream",
-      "url": "https://films.vfstream.eu",
+      "nom": "Vidjoy",
+      "url": "https://vidjoy.pro",
       "categorie": "films_series"
     },
     {
-      "nom": "Top Stream",
-      "url": "https://top-stream.space",
+      "nom": "Mapple",
+      "url": "https://mapple.mov",
       "categorie": "films_series"
     },
     {
-      "nom": "Citysonic",
-      "url": "https://citysonic.tv",
+      "nom": "Hdtodayz",
+      "url": "https://hdtodayz.to",
       "categorie": "films_series"
     },
     {
-      "nom": "Yassflix",
-      "url": "https://yassflix.net",
+      "nom": "Cineo",
+      "url": "https://cineo.online/",
       "categorie": "films_series"
     },
     {
-      "nom": "Purstream",
-      "url": "https://purstream.to",
+      "nom": "Vexmovies",
+      "url": "https://www.vexmovies.biz.id",
       "categorie": "films_series"
     },
     {
-      "nom": "Cinemabz",
-      "url": "https://cinema.bz",
+      "nom": "Yopflix",
+      "url": "https://yopflix.my",
       "categorie": "films_series"
     },
     {
-      "nom": "Rgshows",
-      "url": "https://www.rgshows.ru",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Toflix",
-      "url": "https://toflix.space",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Hdstream",
-      "url": "https://www.hdstream.top",
+      "nom": "Flickystream",
+      "url": "https://flickystream.ru",
       "categorie": "films_series"
     },
     {
@@ -221,168 +336,18 @@
       "categorie": "films_series"
     },
     {
-      "nom": "Xprime",
-      "url": "https://xprime.stream",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Willow",
-      "url": "https://willow.arlen.icu",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Cpasmal",
-      "url": "https://www.cpasmal.rip",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Nova Stream",
-      "url": "https://novastream.top",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Tmovie",
-      "url": "https://tmovie.tv",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Moovbob",
-      "url": "https://moovbob.com/",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Minazuki",
-      "url": "https://minazuki.space",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Spenflix",
-      "url": "https://watch.spencerdevs.xyz",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Senpai Stream",
-      "url": "https://senpai-stream.casa",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Cinefuse",
-      "url": "https://cinefuse.cc",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Empire Streaming",
-      "url": "https://empire-streaming-officiel.org",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Soap2Day",
-      "url": "https://ww25.soap2day.day",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Nunflix",
-      "url": "https://nunflix.link",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Hexa",
-      "url": "https://hexa.su",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "24Drama",
-      "url": "https://watchflix.to",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Ozyma",
-      "url": "https://ozyma.fr",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Movea",
-      "url": "https://onregardequoi.space",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Streamflix",
-      "url": "https://streamflix.fr",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Palacine",
-      "url": "https://www.palacine.net",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Moviesjoytv",
-      "url": "http://ww1.moviesjoy.to",
-      "categorie": "films_series"
-    },
-    {
       "nom": "Sflix",
       "url": "https://sflixz.uk",
       "categorie": "films_series"
     },
     {
-      "nom": "Flickystream",
-      "url": "https://flickystream.ru",
+      "nom": "Frflix",
+      "url": "https://frflix.mov",
       "categorie": "films_series"
     },
     {
-      "nom": "Cinego",
-      "url": "https://cinego.co",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Bflix",
-      "url": "https://bflix.sh",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Yesmovies",
-      "url": "https://ww1.yesmovies.ag",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Monstream",
-      "url": "https://vww.monstream.cafe",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Flixter",
-      "url": "https://flixter.ac",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Yflix",
-      "url": "https://yflix.to",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "123Moviesfree",
-      "url": "https://ww8.123moviesfree.net",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Noctaflix",
-      "url": "https://noctaflix.lol",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Seko Stream",
-      "url": "https://seko-stream.com",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Wiflix",
-      "url": "https://flemmix.rent",
-      "categorie": "films_series"
-    },
-    {
-      "nom": "Xonaflix",
-      "url": "https://xonaflix.io",
+      "nom": "Coflix",
+      "url": "https://coflix.observer",
       "categorie": "films_series"
     },
     {
@@ -391,8 +356,38 @@
       "categorie": "films_series"
     },
     {
-      "nom": "Serialgo",
-      "url": "https://serialgo.tv",
+      "nom": "Nunflix",
+      "url": "https://nunflix.link",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Cinefuse",
+      "url": "https://cinefuse.cc",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Wow Films",
+      "url": "https://wowfilms0126.site",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Cinemerveilles",
+      "url": "https://cinemerveilles.fr",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Hexa",
+      "url": "https://hexa.su",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Monstream",
+      "url": "https://vww.monstream.cafe",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Ozyma",
+      "url": "https://ozyma.fr",
       "categorie": "films_series"
     },
     {
@@ -401,150 +396,50 @@
       "categorie": "films_series"
     },
     {
-      "nom": "Yopflix",
-      "url": "https://yopflix.my",
+      "nom": "Bflix",
+      "url": "https://bflix.sh",
       "categorie": "films_series"
     },
     {
-      "nom": "Mapple",
-      "url": "https://mapple.mov",
+      "nom": "Palacine",
+      "url": "https://www.palacine.net",
       "categorie": "films_series"
     },
     {
-      "nom": "Yoyomovies",
-      "url": "https://yoyomovies.net",
+      "nom": "Yflix",
+      "url": "https://yflix.to",
       "categorie": "films_series"
     },
     {
-      "nom": "Wookafr",
-      "url": "https://wookafr.bid",
+      "nom": "Watchtv",
+      "url": "https://www.cyberghostvpn.com/offer/RechercheStream_43eupgk",
       "categorie": "films_series"
     },
     {
-      "nom": "Watchseries",
-      "url": "https://watchseries.bar",
+      "nom": "Ztvplus",
+      "url": "https://ztvplus.site",
       "categorie": "films_series"
     },
     {
-      "nom": "Hdtodayz",
-      "url": "https://hdtodayz.to",
+      "nom": "Movea",
+      "url": "https://onregardequoi.space",
       "categorie": "films_series"
     },
     {
-      "nom": "1Movies",
-      "url": "https://1movies.bz",
+      "nom": "Allmovieland",
+      "url": "https://allmovieland.io",
+      "categorie": "films_series"
+    },
+    {
+      "nom": "Rgshows",
+      "url": "https://www.rgshows.ru",
       "categorie": "films_series"
     }
   ],
   "animes": [
     {
-      "nom": "Weflix",
-      "url": "https://Weflix.to",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Vostanimey",
-      "url": " https://fr.vostanime.fr",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Voiranime",
-      "url": "https://v6.voiranime.com",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Toonanime",
-      "url": "https://v8.toonanime.co",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Animesite",
-      "url": "https://animesite.fr",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Anistream",
-      "url": "https://anistream.fr/",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Adn",
-      "url": "https://animationdigitalnetwork.com",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Wooflix",
-      "url": "https://wooflix.io",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Voirdrama",
-      "url": "https://voirdrama.org",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Dorawatch",
-      "url": "https://dorawatch.one",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Flickystream",
-      "url": "https://flickystream.ru",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Anime Sama",
-      "url": "https://animes-sama.fr",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Adkami",
-      "url": "https://www.adkami.com",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Flixter",
-      "url": "https://flixter.ac",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Anime Kami",
-      "url": "https://anime-kami.com",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Mavanimes",
-      "url": "https://www.mavanimes.co",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Yukiflix",
-      "url": "https://yukiflix.pythonanywhere.com",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Minazuki",
-      "url": "https://minazuki.space",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Spenflix",
-      "url": "https://watch.spencerdevs.xyz",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Tanime",
-      "url": "https://tanime.tv",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Aniwatchx",
-      "url": "https://aniwatchx.to",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Enma",
-      "url": "https://www.enma.lol",
+      "nom": "Hianime",
+      "url": "https://hianime.to/",
       "categorie": "animes"
     },
     {
@@ -553,23 +448,33 @@
       "categorie": "animes"
     },
     {
-      "nom": "Cinefuse",
-      "url": "https://cinefuse.cc",
+      "nom": "Yukiflix",
+      "url": "https://yukiflix.pythonanywhere.com",
       "categorie": "animes"
     },
     {
-      "nom": "Hianime",
-      "url": "https://hianime.to/",
+      "nom": "Spenflix",
+      "url": "https://watch.spencerdevs.xyz",
       "categorie": "animes"
     },
     {
-      "nom": "Vidjoy",
-      "url": "https://vidjoy.pro",
+      "nom": "Voiranime",
+      "url": "https://v6.voiranime.com",
       "categorie": "animes"
     },
     {
-      "nom": "Jetanimes",
-      "url": "https://on.jetanimes.com",
+      "nom": "Mavanimes",
+      "url": "https://www.mavanimes.co",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Flixter",
+      "url": "https://flixter.ac",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Minazuki",
+      "url": "https://minazuki.space",
       "categorie": "animes"
     },
     {
@@ -578,33 +483,18 @@
       "categorie": "animes"
     },
     {
-      "nom": "Hexa",
-      "url": "https://hexa.su",
+      "nom": "Cinefuse",
+      "url": "https://cinefuse.cc",
       "categorie": "animes"
     },
     {
-      "nom": "Mapple",
-      "url": "https://mapple.mov",
+      "nom": "Tanime",
+      "url": "https://tanime.tv",
       "categorie": "animes"
     },
     {
-      "nom": "24Drama",
-      "url": "https://watchflix.to",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Animesultra",
-      "url": "https://animesultra.org/",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Yassflix",
-      "url": "https://yassflix.net",
-      "categorie": "animes"
-    },
-    {
-      "nom": "Watchseries",
-      "url": "https://watchseries.bar",
+      "nom": "Animesite",
+      "url": "https://animesite.fr",
       "categorie": "animes"
     },
     {
@@ -613,8 +503,93 @@
       "categorie": "animes"
     },
     {
+      "nom": "Hexa",
+      "url": "https://hexa.su",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Wooflix",
+      "url": "https://wooflix.io",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Anime Kami",
+      "url": "https://anime-kami.com",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Aniwatchx",
+      "url": "https://aniwatchx.to",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Anistream",
+      "url": "https://anistream.fr/",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Vidjoy",
+      "url": "https://vidjoy.pro",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Vostanimey",
+      "url": " https://fr.vostanime.fr",
+      "categorie": "animes"
+    },
+    {
       "nom": "Palacine",
       "url": "https://www.palacine.net",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Jetanimes",
+      "url": "https://on.jetanimes.com",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Animesultra",
+      "url": "https://animesultra.org/",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Mapple",
+      "url": "https://mapple.mov",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Hdtodayz",
+      "url": "https://hdtodayz.to",
+      "categorie": "animes"
+    },
+    {
+      "nom": "24Drama",
+      "url": "https://watchflix.to",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Toonanime",
+      "url": "https://v8.toonanime.co",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Voirdrama",
+      "url": "https://voirdrama.org",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Enma",
+      "url": "https://www.enma.lol",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Adn",
+      "url": "https://animationdigitalnetwork.com",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Flickystream",
+      "url": "https://flickystream.ru",
       "categorie": "animes"
     },
     {
@@ -623,8 +598,33 @@
       "categorie": "animes"
     },
     {
-      "nom": "Hdtodayz",
-      "url": "https://hdtodayz.to",
+      "nom": "Dorawatch",
+      "url": "https://dorawatch.one",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Yassflix",
+      "url": "https://yassflix.net",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Adkami",
+      "url": "https://www.adkami.com",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Anime Sama",
+      "url": "https://animes-sama.fr",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Watchseries",
+      "url": "https://watchseries.bar",
+      "categorie": "animes"
+    },
+    {
+      "nom": "Weflix",
+      "url": "https://Weflix.to",
       "categorie": "animes"
     }
   ],
