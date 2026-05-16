@@ -277,6 +277,20 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
   .search-bar input{padding-right:100px;font-size:.92rem;}
   .search-bar-btn{padding:10px 16px;font-size:.8rem;}
 }
+
+/* ── Statut auto-ping ── */
+.link-status { display:flex; align-items:center; gap:6px; font-size:.72rem; font-weight:600; white-space:nowrap; }
+.status-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; transition:background .3s; }
+.status-dot.checking { background:#555; animation:pulse-check .8s infinite; }
+.status-dot.online  { background:var(--green); box-shadow:0 0 6px var(--green); }
+.status-dot.offline { background:var(--red); box-shadow:0 0 6px var(--red); }
+.status-dot.slow    { background:var(--gold); box-shadow:0 0 6px var(--gold); }
+.status-txt { font-family:'JetBrains Mono',monospace; }
+.status-txt.checking { color:var(--t3); }
+.status-txt.online   { color:var(--green); }
+.status-txt.offline  { color:var(--red); }
+.status-txt.slow     { color:var(--gold); }
+@keyframes pulse-check { 0%,100%{opacity:.3;} 50%{opacity:1;} }
 </style>
 </head>
 <body>
@@ -288,11 +302,9 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
   </a>
   <div class="nav-tabs">
     <button class="nt active" id="tab-home" onclick="showHome(this)">Accueil</button>
-    <button class="nt" id="tab-results" onclick="showPage('results',this)">Recherche</button>
     <button class="nt" onclick="showPage('catalogue',this)">Catalogue</button>
     <button class="nt" onclick="showPage('films-page',this)">Films</button>
     <button class="nt" onclick="showPage('series-page',this)">Séries</button>
-    <button class="nt" onclick="showPage('anime-page',this)">Anime</button>
   </div>
   <div class="nav-right">
     <button class="icon-btn" onclick="focusSearch()" title="Rechercher">🔍</button>
@@ -716,28 +728,81 @@ async function searchFull(q){
     grid.innerHTML=items.map((m,i)=>mkCard(m,m.media_type==='tv'?'tv':'movie',i)).join('');
   }
 
-  // 2. Le Bot : Générateur instantané des 128 liens
+  // 2. Générateur de liens avec vérification automatique
   if(allSites && allSites.length > 0) {
     let index = 1;
-    linksGrid.innerHTML = allSites.map(site => {
+    // Filtre uniquement films+séries (pas TV direct pour la recherche de films)
+    const searchSites = allSites.filter(s => s._cat !== 'tv');
+    linksGrid.innerHTML = searchSites.map(site => {
       const searchUrl = getSiteSearchUrl(site, q);
       const domain = (() => { try { return new URL(site.url).hostname; } catch { return site.url || ''; } })();
       const logo = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+      const siteId = `ls-${index}`;
+      index++;
       return `
-        <a href="${searchUrl}" target="_blank" rel="noopener" class="link-row fup" style="animation-delay: ${Math.min(index * 0.012, 0.4)}s">
+        <a href="${searchUrl}" target="_blank" rel="noopener" class="link-row fup" id="${siteId}-row" style="animation-delay:${Math.min((index-1)*0.012,0.4)}s">
           <div class="link-row-left">
-            <span class="link-num">Lien ${index++}</span>
+            <span class="link-num">#${index-1}</span>
             <div class="link-fav">
               <img src="${logo}" onerror="this.style.display='none';this.parentElement.textContent='🌐'">
             </div>
             <span class="link-name">${site.nom}</span>
           </div>
-          <span class="link-btn">Vérifier ↗</span>
+          <div class="link-status" id="${siteId}-status">
+            <div class="status-dot checking" id="${siteId}-dot"></div>
+            <span class="status-txt checking" id="${siteId}-txt">...</span>
+          </div>
         </a>
       `;
     }).join('');
+    // Lance la vérification en arrière-plan (par lots de 5 pour pas spam)
+    pingAllSites(searchSites);
   } else {
-    linksGrid.innerHTML = '<div style="color:var(--t3);padding:1rem;">Chargement des catalogues sources... Réessayez.</div>';
+    linksGrid.innerHTML = '<div style="color:var(--t3);padding:1rem;">Chargement... Réessayez dans 2 secondes.</div>';
+  }
+}
+
+
+// ══ Auto-vérification des sites ══
+async function pingSite(site, idx){
+  const id = `ls-${idx+1}`;
+  const dot = document.getElementById(`${id}-dot`);
+  const txt = document.getElementById(`${id}-txt`);
+  if(!dot||!txt) return;
+  const start = Date.now();
+  try{
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=>ctrl.abort(), 6000);
+    await fetch(site.url, { method:'HEAD', mode:'no-cors', signal:ctrl.signal, cache:'no-store' });
+    clearTimeout(timer);
+    const ms = Date.now()-start;
+    const state = ms < 2000 ? 'online' : 'slow';
+    dot.className = `status-dot ${state}`;
+    txt.className = `status-txt ${state}`;
+    txt.textContent = state === 'online' ? `✓ En ligne (${ms}ms)` : `⚡ Lent (${ms}ms)`;
+  }catch(e){
+    // no-cors fetch peut réussir même sans CORS → si AbortError c'est offline
+    if(e.name === 'AbortError'){
+      dot.className = 'status-dot offline';
+      txt.className = 'status-txt offline';
+      txt.textContent = '✗ Hors ligne';
+    } else {
+      // Opaque response = le site répond (CORS bloqué mais site UP)
+      const ms = Date.now()-start;
+      dot.className = 'status-dot online';
+      txt.className = 'status-txt online';
+      txt.textContent = `✓ En ligne (${ms}ms)`;
+    }
+  }
+}
+
+async function pingAllSites(sites){
+  // Par lots de 8 simultanés
+  const BATCH = 8;
+  for(let i=0; i<sites.length; i+=BATCH){
+    const batch = sites.slice(i, i+BATCH);
+    await Promise.all(batch.map((site, j) => pingSite(site, i+j)));
+    if(i+BATCH < sites.length) await new Promise(r=>setTimeout(r, 300));
   }
 }
 
