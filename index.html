@@ -71,9 +71,7 @@ nav.scrolled{background:rgba(7,7,15,0.93);backdrop-filter:blur(24px);border-bott
 .hero-sub{font-size:1rem;color:var(--t2);font-weight:300;margin-bottom:2.5rem;line-height:1.65;}
 
 /* SEARCH BAR */
-.search-bar{
-  position:relative;width:100%;max-width:700px;margin:0 auto 1rem;
-}
+.search-bar{position:relative;width:100%;max-width:700px;margin:0 auto 1rem;}
 .search-bar input{
   width:100%;padding:20px 130px 20px 24px;
   background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);
@@ -155,16 +153,30 @@ nav.scrolled{background:rgba(7,7,15,0.93);backdrop-filter:blur(24px);border-bott
 .mc-title{font-size:.73rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;}
 .mc-year{font-size:.62rem;color:var(--t3);}
 
-/* ══ RESULTS PAGE ══ */
-.results-page{display:none;padding:80px 2rem 3rem;}
+/* ══ RESULTS / SEARCH PAGE ══ */
+.results-page{display:none;padding:90px 2rem 3rem;}
 .results-page.show{display:block;}
-.results-head{margin-bottom:1.5rem;}
-.results-head h2{font-size:1.4rem;font-weight:800;margin-bottom:.3rem;}
+.results-head{margin-bottom:2rem;}
+.results-head h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem;}
 .results-head p{font-size:.85rem;color:var(--t2);}
 .results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;}
 
+/* Split Layout */
+.res-layout-split { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 1.5rem; }
+@media(min-width: 992px) { .res-layout-split { grid-template-columns: 1fr 400px; } }
+.links-box { background: var(--bg2); border: 1px solid var(--b2); border-radius: var(--r2); padding: 1.5rem; height: max-content; }
+.links-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; max-height: 550px; overflow-y: auto; padding-right: 4px; }
+.link-row { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.85rem; background: var(--bg3); border: 1px solid var(--b); border-radius: var(--r); transition: all 0.2s; text-decoration: none; color: inherit; }
+.link-row:hover { background: var(--s2); border-color: rgba(79,142,247,.35); transform: translateY(-1px); }
+.link-row-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.link-num { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--t3); width: 45px; flex-shrink: 0; }
+.link-fav { width: 22px; height: 22px; border-radius: 5px; background: var(--bg2); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; font-size: 11px; }
+.link-fav img { width: 100%; height: 100%; object-fit: contain; }
+.link-name { font-size: 0.82rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.link-btn { font-size: 0.68rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.5px; }
+
 /* ══ CATALOGUE PAGE ══ */
-.cat-page{display:none;padding:80px 2rem 3rem;}
+.cat-page{display:none;padding:90px 2rem 3rem;}
 .cat-page.show{display:block;}
 .cat-h{margin-bottom:1.5rem;}
 .cat-h h2{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.35rem;}
@@ -225,7 +237,7 @@ nav.scrolled{background:rgba(7,7,15,0.93);backdrop-filter:blur(24px);border-bott
 .pclose:hover{background:rgba(255,77,109,.15);border-color:rgba(255,77,109,.3);color:var(--red);}
 .player-area{position:relative;flex:1;min-height:280px;background:#000;}
 .player-area iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-.pfoot{padding:.85rem 1.25rem;border-top:1px solid var(--b);flex-shrink:0;max-height:150px;overflow-y:auto;}
+.pfoot{padding:.85rem 1.25rem;border-top:1px solid var(--b);flex-shrink:0;max-height:150px;overflow-y:auto;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
 .pfoot-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:.45rem;}
 .stabs{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.6rem;}
 .stab{padding:6px 12px;border-radius:7px;border:1px solid var(--b);background:transparent;color:var(--t2);
@@ -235,6 +247,8 @@ nav.scrolled{background:rgba(7,7,15,0.93);backdrop-filter:blur(24px);border-bott
 .ep-row{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;}
 .ep-lbl{font-size:.76rem;color:var(--t2);}
 .ep-sel{padding:6px 10px;border-radius:7px;border:1px solid var(--b);background:var(--bg3);color:var(--t);font-family:'Outfit',sans-serif;font-size:.76rem;cursor:pointer;outline:none;}
+.wiki-fallback {font-size: 0.65rem; color: var(--t3); text-align: right; font-family: 'JetBrains Mono', monospace;}
+.wiki-fallback a {color: var(--cyan); text-decoration: none;}
 
 /* UTILS */
 .spin-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;padding:2.5rem;color:var(--t2);font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:2px;}
@@ -252,12 +266,13 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
 .footer-note{font-size:.65rem;color:var(--t3);font-family:'JetBrains Mono',monospace;line-height:1.7;}
 
 @media(max-width:768px){
-  nav{padding:0 1rem;}.nav-tabs{display:none;}
+  nav{padding:0 1rem;}.nav-tabs{gap:0.05rem;}
+  .nt{padding:5px 8px; font-size:0.78rem;}
   .hero-search{padding:80px 1rem 3rem;}
   .hero-title{letter-spacing:-1px;}
   .hero-stats{gap:1rem;}
   .sec-head,.slider{padding-left:1.25rem;padding-right:1.25rem;}
-  .results-page,.cat-page{padding:70px 1rem 3rem;}
+  .results-page,.cat-page{padding:80px 1rem 3rem;}
   .mc{flex:0 0 128px;}
   .search-bar input{padding-right:100px;font-size:.92rem;}
   .search-bar-btn{padding:10px 16px;font-size:.8rem;}
@@ -266,14 +281,14 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <a class="logo" href="#" onclick="showHome()">
     <div class="logo-gem">◆</div>
     Stream<span>Search</span>
   </a>
   <div class="nav-tabs">
-    <button class="nt active" onclick="showHome(this)">Accueil</button>
+    <button class="nt active" id="tab-home" onclick="showHome(this)">Accueil</button>
+    <button class="nt" id="tab-results" onclick="showPage('results',this)">Recherche</button>
     <button class="nt" onclick="showPage('catalogue',this)">Catalogue</button>
     <button class="nt" onclick="showPage('films-page',this)">Films</button>
     <button class="nt" onclick="showPage('series-page',this)">Séries</button>
@@ -284,7 +299,6 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
   </div>
 </nav>
 
-<!-- PLAYER -->
 <div class="pover" id="pover">
   <div class="pbox">
     <div class="phead">
@@ -298,24 +312,27 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
       <iframe id="p-iframe" allowfullscreen allow="autoplay;fullscreen;encrypted-media;picture-in-picture;gyroscope;accelerometer" referrerpolicy="no-referrer" src="about:blank"></iframe>
     </div>
     <div class="pfoot">
-      <div class="pfoot-label">Source de lecture</div>
-      <div class="stabs" id="stabs"></div>
-      <div id="ep-wrap" style="display:none;margin-top:.5rem;">
-        <div class="pfoot-label">Navigation épisodes</div>
-        <div class="ep-row">
-          <span class="ep-lbl">Saison</span>
-          <select class="ep-sel" id="sel-sa" onchange="onSaChange()"></select>
-          <span class="ep-lbl">Épisode</span>
-          <select class="ep-sel" id="sel-ep" onchange="onEpChange()"></select>
+      <div>
+        <div class="pfoot-label">Source de lecture</div>
+        <div class="stabs" id="stabs"></div>
+        <div id="ep-wrap" style="display:none;margin-top:.5rem;">
+          <div class="pfoot-label">Navigation épisodes</div>
+          <div class="ep-row">
+            <span class="ep-lbl">Saison</span>
+            <select class="ep-sel" id="sel-sa" onchange="onSaChange()"></select>
+            <span class="ep-lbl">Épisode</span>
+            <select class="ep-sel" id="sel-ep" onchange="onEpChange()"></select>
+          </div>
         </div>
+      </div>
+      <div class="wiki-fallback">
+        Frembed HS ?<br>Nouveaux liens sur <a href="https://audin213.com" target="_blank">audin213.com</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- HOME -->
 <div id="pg-home">
-  <!-- HERO SEARCH -->
   <div class="hero-search">
     <div class="hero-bg-blur"></div>
     <div class="hero-grid"></div>
@@ -341,7 +358,6 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
     </div>
   </div>
 
-  <!-- TRENDING -->
   <div class="pg">
     <div class="sec">
       <div class="sec-head"><div class="sec-title"><span class="dot dot-blue"></span>Films tendances</div></div>
@@ -362,16 +378,30 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
   </div>
 </div>
 
-<!-- RESULTS PAGE -->
 <div class="results-page" id="pg-results">
   <div class="results-head">
-    <h2 id="res-title">Résultats</h2>
-    <p id="res-sub"></p>
+    <h2 id="res-title">Moteur de recherche global</h2>
+    <p id="res-sub">Lance une recherche pour générer la lecture directe et les 128 liens externes de streaming.</p>
+    
+    <div class="search-bar" style="margin: 1.5rem 0 0 0; max-width: 100%;">
+      <input type="text" id="inner-search" placeholder="Tape un titre de film, série, anime..." onkeydown="if(event.key==='Enter')searchFull(this.value)" autocomplete="off">
+      <button class="search-bar-btn" onclick="searchFull(document.getElementById('inner-search').value)">Rechercher</button>
+    </div>
   </div>
-  <div class="results-grid" id="res-grid"></div>
+  
+  <div class="res-layout-split" id="res-layout-box" style="display: none;">
+    <div>
+      <div class="sec-lbl" style="color: var(--blue);">▶ Lecture Directe Intégrée</div>
+      <div class="results-grid" id="res-grid"></div>
+    </div>
+    
+    <div class="links-box">
+      <div class="sec-lbl" style="color: var(--green);">📡 Liste des liens de streaming (Générée)</div>
+      <div class="links-list" id="res-links-grid"></div>
+    </div>
+  </div>
 </div>
 
-<!-- FILMS PAGE -->
 <div class="cat-page" id="pg-films-page">
   <div class="sec"><div class="sec-head"><div class="sec-title"><span class="dot dot-green"></span>Derniers films VF — Frembed</div></div>
     <div class="slider" id="sl-f-new"><div class="spin-wrap" style="flex:0 0 100%"><div class="spin"></div></div></div></div>
@@ -383,7 +413,6 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
     <div class="slider" id="sl-f-now"><div class="spin-wrap" style="flex:0 0 100%"><div class="spin"></div></div></div></div>
 </div>
 
-<!-- SERIES PAGE -->
 <div class="cat-page" id="pg-series-page">
   <div class="sec"><div class="sec-head"><div class="sec-title"><span class="dot dot-green"></span>Dernières séries VF — Frembed</div></div>
     <div class="slider" id="sl-s-new"><div class="spin-wrap" style="flex:0 0 100%"><div class="spin"></div></div></div></div>
@@ -395,7 +424,6 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
     <div class="slider" id="sl-s-air"><div class="spin-wrap" style="flex:0 0 100%"><div class="spin"></div></div></div></div>
 </div>
 
-<!-- ANIME PAGE -->
 <div class="cat-page" id="pg-anime-page">
   <div class="sec"><div class="sec-head"><div class="sec-title"><span class="dot dot-pink"></span>Animes VF — Frembed</div></div>
     <div class="slider" id="sl-an-1"><div class="spin-wrap" style="flex:0 0 100%"><div class="spin"></div></div></div></div>
@@ -403,7 +431,6 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
     <div class="slider" id="sl-an-2"><div class="spin-wrap" style="flex:0 0 100%"><div class="spin"></div></div></div></div>
 </div>
 
-<!-- CATALOGUE SITES -->
 <div class="cat-page" id="pg-catalogue">
   <div class="cat-h"><h2>📡 Catalogue de sites</h2><p>Tous les sites de streaming indexés, mis à jour automatiquement chaque jour.</p></div>
   <div class="cat-stats">
@@ -426,38 +453,35 @@ footer{padding:2rem;border-top:1px solid var(--b);text-align:center;}
   <div class="footer-logo">◆ Stream<span>Search</span></div>
   <div class="footer-links">
     <a href="#" onclick="showHome()">Accueil</a>
+    <a href="#" onclick="showPage('results', document.getElementById('tab-results'))">Recherche</a>
     <a href="#" onclick="showPage('catalogue')">Sites</a>
     <a href="#" onclick="showPage('films-page')">Films</a>
     <a href="#" onclick="showPage('series-page')">Séries</a>
     <a href="#" onclick="showPage('anime-page')">Anime</a>
   </div>
   <div class="footer-note">
-    Sources : TMDB · Frembed · GitHub Nissay8z/json<br>
+    Sources : TMDB · Frembed · audin213.com · GitHub Nissay8z/json<br>
     Ce site référence des services de streaming tiers. Usage personnel uniquement.
   </div>
 </footer>
 
 <script>
 // ══════════════════════════════════════════════════
-// CONFIG (obfusquée pour repo public)
+// CONFIG
 // ══════════════════════════════════════════════════
 const _k=['\x35\x63\x35\x38\x39\x38\x31\x64','\x61\x33\x36\x30\x30\x30\x36\x63','\x38\x31\x61\x61\x63\x64\x65\x34','\x34\x35\x62\x62\x32\x30\x34\x61'];
 const TK=_k.join('');
 const IMG='https://image.tmdb.org/t/p/';
 
-// Frembed - auto-résolution
-const FB_DOMAINS=['https://frembed.cyou','https://frembed.fr','https://frembed.lol','https://frembed.cfd','https://frembed.fun'];
-let FB=localStorage.getItem('_fb')||'https://frembed.cyou';
+// AJUSTEMENT SMART FALLBACK MULTI-URLS : Intégration de audin213.com comme filet de secours
+const FB_DOMAINS=['https://frembed.one','https://audin213.com','https://frembed.cyou','https://frembed.fr','https://frembed.lol'];
+let FB=localStorage.getItem('_fb')||'https://frembed.one';
 const SOURCES_URL='https://raw.githubusercontent.com/Nissay8z/json/main/sources.json';
 const CONFIG_URL='https://raw.githubusercontent.com/Nissay8z/json/main/config.json';
 
-// Sources lecteur
+// LECTEURS EXCLUSIFS VF FREMBED MODULAIRE
 const EMBED_SRC=[
   {label:'🇫🇷 Frembed VF',url:(t,id,sa,ep)=>t==='movie'?`${FB}/embed/movie/${id}`:`${FB}/embed/serie/${id}?sa=${sa}&epi=${ep}`},
-  {label:'VidSrc',url:(t,id)=>`https://vidsrc.to/embed/${t}/${id}`},
-  {label:'2Embed',url:(t,id)=>`https://www.2embed.cc/embed/${id}`},
-  {label:'EmbedSu',url:(t,id)=>`https://embed.su/embed/${t==='movie'?'movie':'tv'}/${id}`},
-  {label:'AutoEmbed',url:(t,id)=>`https://player.autoembed.cc/embed/${t}/${id}`},
 ];
 
 // ══════════════════════════════════════════════════
@@ -468,15 +492,13 @@ let allSites=[],catF='all',sitesLoaded=false,lang='vf';
 let pagesLoaded={};
 
 // ══════════════════════════════════════════════════
-// INIT FREMBED
+// INIT SYSTEMES & CORES
 // ══════════════════════════════════════════════════
 async function initFB(){
-  // Lit config.json du repo public
   try{
     const r=await fetch(CONFIG_URL+'?t='+Date.now(),{signal:AbortSignal.timeout(4000)});
     if(r.ok){const c=await r.json();if(c.frembed_domain){FB=c.frembed_domain;localStorage.setItem('_fb',FB);return;}}
   }catch{}
-  // Sinon teste les domaines
   for(const d of FB_DOMAINS){
     try{
       const r=await fetch(d+'/api/public/v1/movies?page=1',{signal:AbortSignal.timeout(4000),headers:{'Accept':'application/json'}});
@@ -485,13 +507,10 @@ async function initFB(){
   }
 }
 
-// ══════════════════════════════════════════════════
-// SCROLL NAV
-// ══════════════════════════════════════════════════
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
 
 // ══════════════════════════════════════════════════
-// PAGES
+// ROUTER PAGES & NAVIGATION
 // ══════════════════════════════════════════════════
 const ALL_PAGES=['home','results','catalogue','films-page','series-page','anime-page'];
 function showHome(btn){
@@ -502,6 +521,7 @@ function showHome(btn){
   });
   document.querySelectorAll('.nt').forEach(t=>t.classList.remove('active'));
   if(btn) btn.classList.add('active');
+  else document.getElementById('tab-home').classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -523,7 +543,7 @@ function showPage(p,btn){
 }
 
 // ══════════════════════════════════════════════════
-// API CALLS
+// FETCH ENGINES
 // ══════════════════════════════════════════════════
 async function tmdb(path,q=''){
   try{
@@ -539,7 +559,7 @@ async function frembed(path){
 }
 
 // ══════════════════════════════════════════════════
-// CARDS
+// CARDS GENERATOR
 // ══════════════════════════════════════════════════
 function mkCard(item,type,i=0){
   const isVF=item.version&&(item.version.includes('French')||item.version==='VF');
@@ -581,14 +601,13 @@ async function fillTMDB(elId,path,type){
 }
 
 // ══════════════════════════════════════════════════
-// LOAD SECTIONS
+// CONTENUS SECTIONS
 // ══════════════════════════════════════════════════
 async function loadHome(){
   fillTMDB('sl-home-fm','/trending/movie/week','movie');
   fillTMDB('sl-home-tv','/trending/tv/week','tv');
   fillFB('sl-home-vf','/api/public/v1/movies?page=1','movie');
   fillFB('sl-home-an','/api/public/v1/anime?page=1','movie');
-  // Stats Frembed
   try{
     const fm=await frembed('/api/public/v1/movies?page=1');
     const fs=await frembed('/api/public/v1/series?page=1');
@@ -616,17 +635,17 @@ function loadAnime(){
 }
 
 // ══════════════════════════════════════════════════
-// SEARCH
+// BOT MOTEUR DE RECHERCHE DYNAMIQUE SMART URLS
 // ══════════════════════════════════════════════════
-let sTmr=null,lastQ='';
+let sTmr=null;
 function setLang(l,btn){
   lang=l;
   document.querySelectorAll('.vf-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
 }
 function focusSearch(){
-  document.getElementById('main-search').focus();
-  window.scrollTo({top:0,behavior:'smooth'});
+  showPage('results', document.getElementById('tab-results'));
+  document.getElementById('inner-search').focus();
 }
 async function doSearch(q){
   clearTimeout(sTmr);
@@ -655,36 +674,75 @@ async function doSearch(q){
     drop.classList.add('show');
   },300);
 }
-function closeDrop(){document.getElementById('s-drop').classList.remove('show');}
 document.addEventListener('click',e=>{if(!e.target.closest('.search-bar'))closeDrop();});
+function closeDrop(){document.getElementById('s-drop').classList.remove('show');}
+
+function getSiteSearchUrl(site, query) {
+  if (!site.url) return '#';
+  const base = site.url.replace(/\/$/, ''); 
+  const qClean = encodeURIComponent(query);
+  const qPlus = encodeURIComponent(query).replace(/%20/g, '+');
+  if (base.includes('onregardequoi.space') || base.includes('movea')) return `https://onregardequoi.space/search?q=${qClean}`;
+  if (base.includes('leizy.fr')) return `https://leizy.fr/catalogue?search=${qClean}`;
+  if (base.includes('wiflix')) return `${base}/index.php?do=search&subaction=search&story=${qPlus}`;
+  if (base.includes('cpasbien') || base.includes('oxitorv')) return `${base}/recherche/${qClean}`;
+  return `${base}/?s=${qPlus}`;
+}
 
 async function searchFull(q){
   if(!q||q.length<2) return;
   closeDrop();
+  
+  // Synchronise les deux inputs de recherche
+  document.getElementById('main-search').value = q;
+  document.getElementById('inner-search').value = q;
+  
   const d=await tmdb('/search/multi',`&query=${encodeURIComponent(q)}`);
-  const results=document.getElementById('pg-results');
   const grid=document.getElementById('res-grid');
-  // Switch to results page
-  document.getElementById('pg-home').style.display='none';
-  ALL_PAGES.filter(x=>x!=='home').forEach(id=>{
-    const el=document.getElementById('pg-'+id);
-    if(el){el.style.display='none';el.classList.remove('show');}
-  });
-  results.style.display='block';results.classList.add('show');
+  const linksGrid=document.getElementById('res-links-grid');
+  const layoutBox=document.getElementById('res-layout-box');
+  
+  showPage('results', document.getElementById('tab-results'));
+  layoutBox.style.display = 'grid';
   document.getElementById('res-title').textContent=`Résultats pour "${q}"`;
+  
+  // 1. Lecture Directe unique via Frembed/audin213
   if(!d?.results||!d.results.length){
     document.getElementById('res-sub').textContent='Aucun résultat trouvé.';
-    grid.innerHTML='<div style="color:var(--t2);padding:2rem">Essaie un autre titre.</div>';
-    return;
+    grid.innerHTML='<div style="color:var(--t2);padding:2rem">Indisponible en lecture directe. Utilisez la liste des liens générés à droite.</div>';
+  } else {
+    const items=d.results.filter(x=>x.media_type!=='person');
+    document.getElementById('res-sub').textContent=`${items.length} résultat${items.length>1?'s':''} trouvé${items.length>1?'s':''}`;
+    grid.innerHTML=items.map((m,i)=>mkCard(m,m.media_type==='tv'?'tv':'movie',i)).join('');
   }
-  const items=d.results.filter(x=>x.media_type!=='person');
-  document.getElementById('res-sub').textContent=`${items.length} résultat${items.length>1?'s':''} trouvé${items.length>1?'s':''}`;
-  grid.innerHTML=items.map((m,i)=>mkCard(m,m.media_type==='tv'?'tv':'movie',i)).join('');
-  window.scrollTo({top:0,behavior:'smooth'});
+
+  // 2. Le Bot : Générateur instantané des 128 liens
+  if(allSites && allSites.length > 0) {
+    let index = 1;
+    linksGrid.innerHTML = allSites.map(site => {
+      const searchUrl = getSiteSearchUrl(site, q);
+      const domain = (() => { try { return new URL(site.url).hostname; } catch { return site.url || ''; } })();
+      const logo = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+      return `
+        <a href="${searchUrl}" target="_blank" rel="noopener" class="link-row fup" style="animation-delay: ${Math.min(index * 0.012, 0.4)}s">
+          <div class="link-row-left">
+            <span class="link-num">Lien ${index++}</span>
+            <div class="link-fav">
+              <img src="${logo}" onerror="this.style.display='none';this.parentElement.textContent='🌐'">
+            </div>
+            <span class="link-name">${site.nom}</span>
+          </div>
+          <span class="link-btn">Vérifier ↗</span>
+        </a>
+      `;
+    }).join('');
+  } else {
+    linksGrid.innerHTML = '<div style="color:var(--t3);padding:1rem;">Chargement des catalogues sources... Réessayez.</div>';
+  }
 }
 
 // ══════════════════════════════════════════════════
-// PLAYER
+// PLAYER CORE CONTROL
 // ══════════════════════════════════════════════════
 function openPlayer(id,type,title,poster,link=null,sa=1,ep=1){
   curId=id;curType=type;curTitle=title;curPoster=poster||'';curSrc=0;pSa=sa||1;pEp=ep||1;
@@ -730,7 +788,7 @@ function onEpChange(){pEp=parseInt(document.getElementById('sel-ep').value)||1;p
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer();});
 
 // ══════════════════════════════════════════════════
-// SITES CATALOGUE
+// SITES CATALOGUE SCRIPT
 // ══════════════════════════════════════════════════
 const AK=['anime','manga','senpai','papadustream','voiranime','adkami','animesama','french-manga'];
 const TK2=['iptv','live','direct','chaine','ztvplus','watchtv','tele','sport','bfm','lci','cnews'];
@@ -785,12 +843,12 @@ function renderSites(){
 }
 
 // ══════════════════════════════════════════════════
-// INIT
+// MOUNT & BOOTSTRAP
 // ══════════════════════════════════════════════════
 (async()=>{
   await initFB();
   loadHome();
-  loadSites(); // charge les stats en arrière-plan
+  loadSites(); 
 })();
 </script>
 </body>
