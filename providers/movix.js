@@ -6,8 +6,8 @@
 // =============================================================
 
 var TMDB_KEY = 'f3d757824f08ea2cff45eb8f47ca3a1e';
-var DOMAINS_URL = 'https://raw.githubusercontent.com/wooodyhood/nuvio-repo/main/domains.json';
-var MOVIX_FALLBACK = 'cash';
+var DOMAINS_URL = 'https://raw.githubusercontent.com/Nissay8z/json/main/domains.json';
+var MOVIX_FALLBACK = 'rodeo';
 
 var _cachedEndpoint = null;
 
