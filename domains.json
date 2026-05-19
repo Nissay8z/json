@@ -1,6 +1,7 @@
 {
-  "purstream": "wiki",
+  "as": "si",
   "movix": "rodeo",
-  "toflix": "space",
-  "nakios": "site"
+  "nakios": "site",
+  "purstream": "wiki",
+  "toflix": "wiki"
 }
