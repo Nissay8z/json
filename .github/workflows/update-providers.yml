@@ -23,12 +23,15 @@ jobs:
             const fs = require('fs');
             const path = require('path');
 
+            // Scrapper les wikis
             async function fetchDomainFromWiki(url) {
               try {
                 const resp = await fetch(url);
                 const html = await resp.text();
+                // toflix.wiki : "Domaine actuel # toflix.fit"
                 let match = html.match(/Domaine actuel # ([a-z0-9.-]+)/i);
                 if (match) return match[1];
+                // purstream.wiki : chercher "purstream.qqch"
                 match = html.match(/purstream\.[a-z]{2,}/i);
                 return match ? match[0] : null;
               } catch(e) {
@@ -118,19 +121,36 @@ jobs:
                   }
 
                   let content = fs.readFileSync(filePath, 'utf8');
+
+                  // Remplacer la variable FALLBACK
                   const newContent = content.replace(provider.varRegex, `$1${tld}$3`);
                   if (newContent !== content) {
-                    fs.writeFileSync(filePath, newContent, 'utf8');
+                    content = newContent;
                     console.log(`✅ ${filePath} : ${provider.varName} = '${tld}'`);
                     modifiedCount++;
                   } else {
-                    console.log(`ℹ️ ${filePath} : aucune modification nécessaire`);
+                    console.log(`ℹ️ ${filePath} : aucune modification nécessaire pour ${provider.varName}`);
                   }
+
+                  // Remplacer l'URL de DOMAINS_URL (wooodyhood -> Nissay8z)
+                  const updatedContent = content.replace(
+                    /https:\/\/raw\.githubusercontent\.com\/wooodyhood\/nuvio-repo\/main\/domains\.json/g,
+                    'https://raw.githubusercontent.com/Nissay8z/json/main/domains.json'
+                  );
+                  if (updatedContent !== content) {
+                    fs.writeFileSync(filePath, updatedContent, 'utf8');
+                    console.log(`✅ ${filePath} : DOMAINS_URL mis à jour (wooodyhood → Nissay8z)`);
+                    modifiedCount++;
+                  } else {
+                    fs.writeFileSync(filePath, updatedContent, 'utf8');
+                  }
+
                   break;
                 }
               }
             }
 
+            // Régénérer manifest.json
             if (fs.existsSync('providers')) {
               const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
               const manifest = {
@@ -165,5 +185,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add providers/*.js manifest.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour automatique des providers (domaines extraits des wikis)"
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour automatique des providers (domaines extraits des wikis + DOMAINS_URL vers Nissay8z)"
           git push
