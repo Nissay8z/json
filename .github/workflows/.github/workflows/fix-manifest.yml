@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Générer manifest.json
-        run: node scripts/gen-manifest.js
+        run: node gen-manifest.js
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
