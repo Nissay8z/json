@@ -1,4 +1,4 @@
-name: Super Synchronisation Catalogue Nuvio
+name: Super Synchronisation Nuvio Globale
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  build-catalogue:
+  build-and-update:
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le code du dépôt
@@ -18,71 +18,91 @@ jobs:
       - name: Configurer Node.js
         uses: actions/setup-node@v4
 
-      - name: Mettre à jour les domaines et le Manifest
+      - name: Créer le script intelligent de mise à jour
         run: |
-          node -e '
+          cat << 'EOF' > script-update.js
           const fs = require("fs");
-          const path = require("path");
 
-          // 1. Sécurité : Vérification du fichier sources.json
+          // 1. Vérification de base
           if (!fs.existsSync("sources.json")) {
             console.log("❌ sources.json introuvable.");
             process.exit(1);
           }
 
-          let sources;
-          try {
-            sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
-          } catch (e) {
-            console.log("❌ sources.json invalide.");
-            process.exit(1);
-          }
-
-          // 2. Mise à jour spécifique de Purstream si présent
+          const sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
           const allItems = [
             ...(sources.films_series || []), 
             ...(sources.animes || []), 
             ...(sources.direct_tv || [])
           ];
-          const purstreamData = allItems.find(item => item.nom && item.nom.toLowerCase().includes("purstream"));
 
-          if (purstreamData && purstreamData.url && fs.existsSync("providers/purstream.js")) {
-            try {
-              const urlObj = new URL(purstreamData.url);
-              const ext = urlObj.hostname.split(".").pop();
-              let providerCode = fs.readFileSync("providers/purstream.js", "utf8");
-              providerCode = providerCode.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
-              fs.writeFileSync("providers/purstream.js", providerCode, "utf8");
-              console.log("✅ Extension Purstream synchronisée avec le domaine ." + ext);
-            } catch (err) {
-              console.log("⚠️ Erreur traitement URL Purstream : " + err.message);
+          let updatedFilesCount = 0;
+
+          // 2. Mise à jour de TOUS les fichiers .js correspondants
+          allItems.forEach(site => {
+            if (!site.nom || !site.url) return;
+            
+            // Transforme "Anime Kami" en "animekami" pour trouver le fichier exact
+            const cleanName = site.nom.toLowerCase().replace(/[^a-z0-9]/g, "");
+            const filepath = "providers/" + cleanName + ".js";
+
+            if (fs.existsSync(filepath)) {
+              let code = fs.readFileSync(filepath, "utf8");
+              let modified = false;
+              
+              // On retire le slash à la fin de l'URL si tu en as mis un par erreur
+              const newUrl = site.url.replace(/\/$/, "");
+              
+              // Cas spécial pour Purstream
+              if (cleanName === "purstream") {
+                try {
+                  const ext = new URL(newUrl).hostname.split(".").pop();
+                  const newCode = code.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
+                  if (newCode !== code) { code = newCode; modified = true; }
+                } catch(e) {}
+              } 
+              // Cas général pour tous les autres (Frflix, Wiflix, Animekami...)
+              else {
+                // Cette formule magique cherche les variables "baseUrl", "baseURL", ou "base_url" 
+                // et remplace l'ancienne adresse par la nouvelle.
+                const regexUrl = /(baseUrl|baseURL|base_url)\s*([=:])\s*(["'])(https?:\/\/[^"'\/?]+)\3/g;
+                const newCode = code.replace(regexUrl, `$1 $2 $3${newUrl}$3`);
+                
+                if (newCode !== code) { 
+                  code = newCode; 
+                  modified = true; 
+                }
+              }
+
+              // Si le robot a trouvé et modifié l'URL, on sauvegarde le fichier
+              if (modified) {
+                fs.writeFileSync(filepath, code, "utf8");
+                console.log(`✅ [${cleanName}.js] mis à jour avec -> ${newUrl}`);
+                updatedFilesCount++;
+              }
             }
-          }
+          });
 
-          // 3. GÉNÉRATION AUTOMATIQUE DU MANIFEST GLOBAL
+          // 3. Génération du manifest.json pour l'application Nuvio
           const manifest = {
-            "name": "Mon Catalogue Global Nissay",
+            "name": "Catalogue Ultime Nissay",
             "version": "1.0.0",
             "scrapers": []
           };
 
-          const providersDir = "providers";
-          if (fs.existsSync(providersDir)) {
-            const files = fs.readdirSync(providersDir).filter(f => f.endsWith(".js"));
+          if (fs.existsSync("providers")) {
+            const files = fs.readdirSync("providers").filter(f => f.endsWith(".js"));
             
             files.forEach(file => {
-              const filename = `providers/${file}`;
               const id = file.replace(".js", "");
-              
-              // On crée automatiquement la configuration pour Nuvio pour CHAQUE fichier trouvé
               manifest.scrapers.push({
                 "id": `${id}_nissay`,
                 "name": id.toUpperCase(),
-                "description": `Extension Nuvio pour ${id}`,
+                "description": `Extension synchronisée pour ${id}`,
                 "version": "1.0.0",
                 "author": "Nissay",
                 "supportedTypes": ["movie", "tv"],
-                "filename": filename,
+                "filename": `providers/${file}`,
                 "enabled": true,
                 "formats": ["mp4", "m3u8"],
                 "contentLanguage": ["fr"]
@@ -91,13 +111,20 @@ jobs:
           }
 
           fs.writeFileSync("manifest.json", JSON.stringify(manifest, null, 2), "utf8");
-          console.log("✅ manifest.json généré avec succès ! Nombre d extensions intégrées : " + manifest.scrapers.length);
-          '
+          console.log(`\n🚀 Terminé ! ${manifest.scrapers.length} extensions ajoutées au manifest.`);
+          console.log(`🛠️  ${updatedFilesCount} fichiers de code source ont été mis à jour avec les nouveaux domaines.`);
+          EOF
+
+      - name: Exécuter le script
+        run: node script-update.js
+
+      - name: Nettoyer les fichiers temporaires
+        run: rm script-update.js
 
       - name: Sauvegarder les modifications sur GitHub
         run: |
           git config --global user.name "NissayBot"
           git config --global user.email "bot@github.com"
           git add providers/*.js manifest.json
-          git diff-index --quiet HEAD || git commit -m "🤖 Robot : Synchronisation globale du catalogue Nuvio"
+          git diff-index --quiet HEAD || git commit -m "🤖 Robot : MàJ globale des domaines et du manifest"
           git push
