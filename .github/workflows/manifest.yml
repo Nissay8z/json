@@ -1,0 +1,16 @@
+name: Refresh Manifest
+
+on: workflow_dispatch
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node gen-manifest.js
+      - run: |
+          git config user.name "bot"
+          git config user.email "bot@github.com"
+          git add manifest.json
+          git commit -m "update manifest" || true
+          git push
