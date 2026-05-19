@@ -10,165 +10,20 @@ permissions:
   contents: write
 
 jobs:
-  full-update:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Exécuter le script de mise à jour global
-        run: |
-          node --input-type=commonjs << 'EOF'
-          (async () => {
-            const fs = require('fs');
-            const path = require('path');
-
-            // ---------- 1. Récupération des domaines depuis les wikis ----------
-            async function fetchDomainFromWiki(url) {
-              try {
-                const resp = await fetch(url);
-                const html = await resp.text();
-                // toflix.wiki : "Domaine actuel # toflix.fit"
-                let match = html.match(/Domaine actuel # ([a-z0-9.-]+)/i);
-                if (match) return match[1];
-                // purstream.wiki : chercher "purstream.qqch"
-                match = html.match(/purstream\.[a-z]{2,}/i);
-                return match ? match[0] : null;
-              } catch(e) {
-                console.warn(`❌ Échec scraping ${url}`, e.message);
-                return null;
-              }
-            }
-
-            // ---------- 2. Lecture de sources.json ----------
-            if (!fs.existsSync('sources.json')) {
-              console.error('❌ sources.json introuvable');
-              process.exit(1);
-            }
-            const sources = JSON.parse(fs.readFileSync('sources.json', 'utf8'));
-            const allItems = [
-              ...(sources.films_series || []),
-              ...(sources.animes || []),
-              ...(sources.direct_tv || [])
-            ];
-
-            // Mapping entre nom dans sources.json et fichier provider + variable + wiki
-            const providerMap = [
-              { nameMatch: /purstream/i, file: 'providers/purstream.js', varName: 'PURSTREAM_FALLBACK', varRegex: /(var\s+PURSTREAM_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i, wikiUrl: 'https://purstream.wiki/' },
-              { nameMatch: /anime-sama/i, file: 'providers/anime-sama.js', varName: 'AS_FALLBACK', varRegex: /(var\s+AS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i, wikiUrl: null },
-              { nameMatch: /toflix/i, file: 'providers/toflix.js', varName: 'TOFLIX_FALLBACK', varRegex: /(var\s+TOFLIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i, wikiUrl: 'https://toflix.wiki/' },
-              { nameMatch: /movix/i, file: 'providers/movix.js', varName: 'MOVIX_FALLBACK', varRegex: /(var\s+MOVIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i, wikiUrl: null },
-              { nameMatch: /nakios/i, file: 'providers/nakios.js', varName: 'NAKIOS_FALLBACK', varRegex: /(var\s+NAKIOS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i, wikiUrl: null }
-            ];
-
-            let domains = {};
-            let modifiedCount = 0;
-
-            // ---------- 3. Mise à jour de chaque provider ----------
-            for (const item of allItems) {
-              const nom = item.nom;
-              for (const provider of providerMap) {
-                if (provider.nameMatch.test(nom)) {
-                  let tld = null;
-
-                  // Récupérer le TLD (via wiki ou via l'URL de sources.json)
-                  if (provider.wikiUrl) {
-                    const domain = await fetchDomainFromWiki(provider.wikiUrl);
-                    if (domain) {
-                      const parts = domain.split('.');
-                      tld = parts.slice(1).join('.');
-                      console.log(`🔍 ${provider.file} : domaine extrait = ${domain} → TLD = ${tld}`);
-                    } else if (item.url) {
-                      try {
-                        const host = new URL(item.url).hostname;
-                        const parts = host.split('.');
-                        tld = parts.slice(1).join('.');
-                        console.log(`🔍 ${provider.file} : fallback depuis sources.json → TLD = ${tld}`);
-                      } catch(e) {}
-                    }
-                  } else {
-                    if (item.url) {
-                      try {
-                        const host = new URL(item.url).hostname;
-                        const parts = host.split('.');
-                        tld = parts.slice(1).join('.');
-                        console.log(`🔍 ${provider.file} : TLD depuis sources.json = ${tld}`);
-                      } catch(e) {}
-                    }
-                  }
-
-                  if (!tld) {
-                    console.warn(`❌ Impossible d'extraire un TLD pour ${nom}`);
-                    continue;
-                  }
-
-                  // Sauvegarder pour domains.json
-                  const key = provider.varName.replace('_FALLBACK', '').toLowerCase();
-                  domains[key] = tld;
-
-                  // Modifier le fichier provider
-                  const filePath = provider.file;
-                  if (!fs.existsSync(filePath)) {
-                    console.warn(`⚠️ Fichier ${filePath} introuvable, sautée`);
-                    continue;
-                  }
-
-                  let content = fs.readFileSync(filePath, 'utf8');
-                  let newContent = content.replace(provider.varRegex, `$1${tld}$3`);
-                  // Remplacer également DOMAINS_URL pour qu'il pointe vers ton dépôt
-                  newContent = newContent.replace(
-                    /https:\/\/raw\.githubusercontent\.com\/wooodyhood\/nuvio-repo\/main\/domains\.json/g,
-                    'https://raw.githubusercontent.com/Nissay8z/json/main/domains.json'
-                  );
-                  if (newContent !== content) {
-                    fs.writeFileSync(filePath, newContent, 'utf8');
-                    console.log(`✅ ${filePath} : ${provider.varName} = '${tld}' et DOMAINS_URL corrigé`);
-                    modifiedCount++;
-                  } else {
-                    console.log(`ℹ️ ${filePath} : aucune modification nécessaire`);
-                  }
-                  break;
-                }
-              }
-            }
-
-            // ---------- 4. Génération de domains.json ----------
-            fs.writeFileSync('domains.json', JSON.stringify(domains, null, 2));
-            console.log(`📄 domains.json généré : ${JSON.stringify(domains)}`);
-
-            // ---------- 5. Génération de manifest.json à partir des fichiers providers ----------
-            if (fs.existsSync('providers')) {
-              const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
-              const manifest = {
-                name: "Catalogue Ultime Nissay",
-                version: "1.0.0",
-                scrapers: files.map(file => {
-                  const id = file.replace(/\.js$/, '');
-                  return {
-                    id: `${id}_nissay`,
-                    name: id.toUpperCase(),
-                    description: `Extension synchronisée pour ${id}`,
-                    version: "1.0.0",
-                    author: "Nissay",
-                    supportedTypes: ["movie", "tv"],
-                    filename: `providers/${file}`,
-                    enabled: true,
-                    formats: ["mp4", "m3u8"],
-                    contentLanguage: ["fr"]
-                  };
-                })
-              };
-              fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
-              console.log(`📄 manifest.json régénéré (${files.length} scrapers)`);
-            }
-
-            console.log(`\n🚀 Terminé. ${modifiedCount} fichier(s) provider modifié(s). domains.json et manifest.json mis à jour.`);
-          })();
-          EOF
-
-      - name: Commit et push des changements
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Lancer le script de mise à jour
+        run: node update.js
+      - name: Commit et push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add providers/*.js domains.json manifest.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour complète (providers, domains, manifest)"
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour automatique (providers, domains, manifest)"
           git push
