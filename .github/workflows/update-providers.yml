@@ -1,130 +1,143 @@
-name: Super Synchronisation Nuvio Globale
+name: Mettre à jour les providers depuis sources.json
 
 on:
   push:
     paths:
       - 'sources.json'
+  workflow_dispatch:  # déclenchement manuel
 
 permissions:
   contents: write
 
 jobs:
-  build-and-update:
+  update-providers:
     runs-on: ubuntu-latest
     steps:
-      - name: Récupérer le code du dépôt
+      - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Configurer Node.js
-        uses: actions/setup-node@v4
-
-      - name: Créer le script intelligent de mise à jour
+      - name: Mettre à jour les fichiers providers
         run: |
-          cat << 'EOF' > script-update.js
-          const fs = require("fs");
+          node << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
 
-          // 1. Vérification de base
-          if (!fs.existsSync("sources.json")) {
-            console.log("❌ sources.json introuvable.");
+          // 1. Charger sources.json
+          if (!fs.existsSync('sources.json')) {
+            console.error('❌ sources.json introuvable');
             process.exit(1);
           }
-
-          const sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
+          const sources = JSON.parse(fs.readFileSync('sources.json', 'utf8'));
           const allItems = [
-            ...(sources.films_series || []), 
-            ...(sources.animes || []), 
+            ...(sources.films_series || []),
+            ...(sources.animes || []),
             ...(sources.direct_tv || [])
           ];
 
-          let updatedFilesCount = 0;
-
-          // 2. Mise à jour de TOUS les fichiers .js correspondants
-          allItems.forEach(site => {
-            if (!site.nom || !site.url) return;
-            
-            // Transforme "Anime Kami" en "animekami" pour trouver le fichier exact
-            const cleanName = site.nom.toLowerCase().replace(/[^a-z0-9]/g, "");
-            const filepath = "providers/" + cleanName + ".js";
-
-            if (fs.existsSync(filepath)) {
-              let code = fs.readFileSync(filepath, "utf8");
-              let modified = false;
-              
-              // On retire le slash à la fin de l'URL si tu en as mis un par erreur
-              const newUrl = site.url.replace(/\/$/, "");
-              
-              // Cas spécial pour Purstream
-              if (cleanName === "purstream") {
-                try {
-                  const ext = new URL(newUrl).hostname.split(".").pop();
-                  const newCode = code.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
-                  if (newCode !== code) { code = newCode; modified = true; }
-                } catch(e) {}
-              } 
-              // Cas général pour tous les autres (Frflix, Wiflix, Animekami...)
-              else {
-                // Cette formule magique cherche les variables "baseUrl", "baseURL", ou "base_url" 
-                // et remplace l'ancienne adresse par la nouvelle.
-                const regexUrl = /(baseUrl|baseURL|base_url)\s*([=:])\s*(["'])(https?:\/\/[^"'\/?]+)\3/g;
-                const newCode = code.replace(regexUrl, `$1 $2 $3${newUrl}$3`);
-                
-                if (newCode !== code) { 
-                  code = newCode; 
-                  modified = true; 
-                }
+          // 2. Fonction pour extraire le TLD (dernier morceau du hostname)
+          function getTld(url) {
+            try {
+              const hostname = new URL(url).hostname;
+              const parts = hostname.split('.');
+              // Ex: purstream.to → 'to', anime-sama.si → 'si', toflix.animaux.cfd → 'animaux.cfd'
+              if (parts.length >= 2) {
+                return parts.slice(1).join('.'); // dernier segment ou les deux derniers
               }
-
-              // Si le robot a trouvé et modifié l'URL, on sauvegarde le fichier
-              if (modified) {
-                fs.writeFileSync(filepath, code, "utf8");
-                console.log(`✅ [${cleanName}.js] mis à jour avec -> ${newUrl}`);
-                updatedFilesCount++;
-              }
-            }
-          });
-
-          // 3. Génération du manifest.json pour l'application Nuvio
-          const manifest = {
-            "name": "Catalogue Ultime Nissay",
-            "version": "1.0.0",
-            "scrapers": []
-          };
-
-          if (fs.existsSync("providers")) {
-            const files = fs.readdirSync("providers").filter(f => f.endsWith(".js"));
-            
-            files.forEach(file => {
-              const id = file.replace(".js", "");
-              manifest.scrapers.push({
-                "id": `${id}_nissay`,
-                "name": id.toUpperCase(),
-                "description": `Extension synchronisée pour ${id}`,
-                "version": "1.0.0",
-                "author": "Nissay",
-                "supportedTypes": ["movie", "tv"],
-                "filename": `providers/${file}`,
-                "enabled": true,
-                "formats": ["mp4", "m3u8"],
-                "contentLanguage": ["fr"]
-              });
-            });
+              return parts[0];
+            } catch(e) { return null; }
           }
 
-          fs.writeFileSync("manifest.json", JSON.stringify(manifest, null, 2), "utf8");
-          console.log(`\n🚀 Terminé ! ${manifest.scrapers.length} extensions ajoutées au manifest.`);
-          console.log(`🛠️  ${updatedFilesCount} fichiers de code source ont été mis à jour avec les nouveaux domaines.`);
+          // 3. Mapping entre le nom dans sources.json et le fichier provider, ainsi que la variable à modifier
+          const providerMap = [
+            { 
+              nameMatch: /purstream/i, 
+              file: 'providers/purstream.js', 
+              varName: 'PURSTREAM_FALLBACK',
+              varRegex: /(var\s+PURSTREAM_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i
+            },
+            { 
+              nameMatch: /anime-sama/i, 
+              file: 'providers/anime-sama.js', 
+              varName: 'AS_FALLBACK',
+              varRegex: /(var\s+AS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i
+            },
+            { 
+              nameMatch: /toflix/i, 
+              file: 'providers/toflix.js', 
+              varName: 'TOFLIX_FALLBACK',
+              varRegex: /(var\s+TOFLIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i
+            },
+            // Ajoute ici d'autres providers si besoin (movix, nakios...)
+          ];
+
+          let modifiedCount = 0;
+
+          for (const item of allItems) {
+            const nom = item.nom;
+            const url = item.url;
+            if (!url) continue;
+
+            for (const provider of providerMap) {
+              if (provider.nameMatch.test(nom)) {
+                const filePath = provider.file;
+                if (!fs.existsSync(filePath)) {
+                  console.warn(`⚠️ Fichier ${filePath} introuvable, sautée`);
+                  continue;
+                }
+
+                const tld = getTld(url);
+                if (!tld) {
+                  console.warn(`⚠️ Impossible d'extraire le TLD depuis ${url}`);
+                  continue;
+                }
+
+                let content = fs.readFileSync(filePath, 'utf8');
+                const newContent = content.replace(provider.varRegex, `$1${tld}$3`);
+                if (newContent !== content) {
+                  fs.writeFileSync(filePath, newContent, 'utf8');
+                  console.log(`✅ ${filePath} : ${provider.varName} = '${tld}' (depuis ${nom})`);
+                  modifiedCount++;
+                } else {
+                  console.log(`ℹ️ ${filePath} : aucune modification nécessaire (déjà à jour ?)`);
+                }
+                break; // sortir de la boucle des providers une fois trouvé
+              }
+            }
+          }
+
+          // Optionnel : mettre aussi à jour manifest.json si besoin
+          if (fs.existsSync('providers')) {
+            const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
+            const manifest = {
+              name: "Catalogue Ultime Nissay",
+              version: "1.0.0",
+              scrapers: files.map(file => {
+                const id = file.replace('.js', '');
+                return {
+                  id: `${id}_nissay`,
+                  name: id.toUpperCase(),
+                  description: `Extension synchronisée pour ${id}`,
+                  version: "1.0.0",
+                  author: "Nissay",
+                  supportedTypes: ["movie", "tv"],
+                  filename: `providers/${file}`,
+                  enabled: true,
+                  formats: ["mp4", "m3u8"],
+                  contentLanguage: ["fr"]
+                };
+              })
+            };
+            fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
+            console.log(`📄 manifest.json régénéré (${files.length} scrapers)`);
+          }
+
+          console.log(`\n🚀 Terminé. ${modifiedCount} fichier(s) provider modifié(s).`);
           EOF
 
-      - name: Exécuter le script
-        run: node script-update.js
-
-      - name: Nettoyer les fichiers temporaires
-        run: rm script-update.js
-
-      - name: Sauvegarder les modifications sur GitHub
+      - name: Commit et push des changements
         run: |
-          git config --global user.name "NissayBot"
-          git config --global user.email "bot@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add providers/*.js manifest.json
-          git diff-index --quiet HEAD || git commit -m "🤖 Robot : MàJ globale des domaines et du manifest"
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour automatique des providers (domaines depuis sources.json)"
           git push
