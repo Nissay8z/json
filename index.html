@@ -7,9 +7,7 @@
 <meta name="description" content="Moteur de recherche streaming VF — Films, Séries, Animes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
 <style>
 :root{
   --bg:#07070f;--bg2:#0c0c1a;--bg3:#111122;--bg4:#161628;
@@ -153,7 +151,6 @@ main{padding:var(--gap);max-width:1400px;margin:0 auto;display:flex;flex-directi
 <script>
 const TMDB_KEY = 'f3d757824f08ea2cff45eb8f47ca3a1e';
 const IMG_BASE = 'https://image.tmdb.org/t/p/w300';
-// CONNEXION DIRECTE A TON WORKER DEPLOYE
 const WORKER_URL = 'https://super-field-ee7f.yraseloued.workers.dev';
 
 let currentMedia = { id: null, type: null, title: '', poster: '', season: 1, episode: 1 };
@@ -210,7 +207,6 @@ sInput.addEventListener('input', async () => {
   sDrop.classList.add('show');
 });
 
-// Appeler ton Worker pour charger les liens sur ton site
 async function openPlayer(id, type, title, poster, season = 1, episode = 1) {
   sDrop.classList.remove('show');
   sInput.value = '';
@@ -233,38 +229,44 @@ async function openPlayer(id, type, title, poster, season = 1, episode = 1) {
   saveHisto();
 }
 
+// ---------- FONCTION CORRIGÉE ----------
 async function loadLinksFromWorker() {
   const container = document.getElementById('streams-container');
-  container.innerHTML = '<div class="loader-stream"><div class="spinner"></div>Interrogation globale de vos serveurs de streaming...</div>';
-  
-  // Formatage de la requête Stremio envoyée à ton propre Worker
-  const streamPath = currentMedia.type === 'movie' ? `/stream/movie/${currentMedia.id}.json` : `/stream/series/${currentMedia.id}:${currentMedia.season}:${currentMedia.episode}.json`;
-  
+  container.innerHTML = '<div class="loader-stream"><div class="spinner"></div>Interrogation du serveur...</div>';
+
+  let url = `${WORKER_URL}?id=${currentMedia.id}&type=${currentMedia.type}`;
+  if (currentMedia.type === 'tv') {
+    url += `&s=${currentMedia.season}&e=${currentMedia.episode}`;
+  }
+
   try {
-    const response = await fetch(WORKER_URL + streamPath).then(r => r.json());
-    const streams = response.streams || [];
-    
-    if(!streams.length) {
-      container.innerHTML = '<div style="color:var(--err); padding:10px 0; font-size:0.9rem;">Aucune source trouvée pour ce titre (Vérifiez les providers actifs de votre Worker).</div>';
+    const response = await fetch(url);
+    const streams = await response.json();
+
+    if (!streams || !streams.length) {
+      container.innerHTML = '<div style="color:var(--err); padding:10px 0;">Aucune source trouvée pour ce titre.</div>';
       return;
     }
 
     container.innerHTML = streams.map((s, idx) => `
       <div class="stream-item ${idx === 0 ? 'active' : ''}" onclick="launchVideo('${s.url}', this)">
         <div class="st-meta">
-          <div class="st-name">${s.name}</div>
-          <div class="st-desc">${s.title.replace(/\n/g, ' ')}</div>
+          <div class="st-name">${s.name || 'Source'}</div>
+          <div class="st-desc">${(s.title || '').replace(/\n/g, ' ')}</div>
         </div>
         <div class="st-action">${idx === 0 ? 'Lecture' : 'Lancer'}</div>
       </div>
     `).join('');
 
-    launchVideo(streams[0].url, container.querySelector('.stream-item'));
-
+    if (streams[0] && streams[0].url) {
+      launchVideo(streams[0].url, container.querySelector('.stream-item'));
+    }
   } catch(e) {
-    container.innerHTML = '<div style="color:var(--err); padding:10px 0; font-size:0.9rem;">Erreur de connexion avec votre Worker Cloudflare.</div>';
+    console.error(e);
+    container.innerHTML = '<div style="color:var(--err); padding:10px 0;">Erreur de connexion avec le Worker Cloudflare.</div>';
   }
 }
+// ------------------------------------
 
 function launchVideo(url, element) {
   const video = document.getElementById('main-video');
