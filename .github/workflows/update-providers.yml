@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'sources.json'
-  workflow_dispatch:  # déclenchement manuel
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,13 +16,31 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Mettre à jour les fichiers providers
+      - name: Mettre à jour les providers
         run: |
           node << 'EOF'
           const fs = require('fs');
           const path = require('path');
+          const https = require('https');
 
-          // 1. Charger sources.json
+          // ----- 1) Fonction pour extraire un domaine depuis un wiki -----
+          async function fetchDomainFromWiki(url) {
+            try {
+              const resp = await fetch(url);
+              const html = await resp.text();
+              // Cas toflix.wiki : "Domaine actuel # toflix.fit"
+              let match = html.match(/Domaine actuel # ([a-z0-9.-]+)/i);
+              if (match) return match[1];
+              // Cas purstream.wiki : chercher "purstream.qqch"
+              match = html.match(/purstream\.[a-z]{2,}/i);
+              return match ? match[0] : null;
+            } catch(e) {
+              console.warn(`❌ Échec scraping ${url}`, e.message);
+              return null;
+            }
+          }
+
+          // ----- 2) Charger sources.json -----
           if (!fs.existsSync('sources.json')) {
             console.error('❌ sources.json introuvable');
             process.exit(1);
@@ -34,60 +52,76 @@ jobs:
             ...(sources.direct_tv || [])
           ];
 
-          // 2. Fonction pour extraire le TLD (dernier morceau du hostname)
-          function getTld(url) {
-            try {
-              const hostname = new URL(url).hostname;
-              const parts = hostname.split('.');
-              // Ex: purstream.to → 'to', anime-sama.si → 'si', toflix.animaux.cfd → 'animaux.cfd'
-              if (parts.length >= 2) {
-                return parts.slice(1).join('.'); // dernier segment ou les deux derniers
-              }
-              return parts[0];
-            } catch(e) { return null; }
-          }
-
-          // 3. Mapping entre le nom dans sources.json et le fichier provider, ainsi que la variable à modifier
+          // ----- 3) Mise à jour des providers -----
           const providerMap = [
             { 
               nameMatch: /purstream/i, 
               file: 'providers/purstream.js', 
               varName: 'PURSTREAM_FALLBACK',
-              varRegex: /(var\s+PURSTREAM_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i
+              varRegex: /(var\s+PURSTREAM_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
+              wikiUrl: 'https://purstream.wiki/'
             },
             { 
               nameMatch: /anime-sama/i, 
               file: 'providers/anime-sama.js', 
               varName: 'AS_FALLBACK',
-              varRegex: /(var\s+AS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i
+              varRegex: /(var\s+AS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
+              wikiUrl: null
             },
             { 
               nameMatch: /toflix/i, 
               file: 'providers/toflix.js', 
               varName: 'TOFLIX_FALLBACK',
-              varRegex: /(var\s+TOFLIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i
-            },
-            // Ajoute ici d'autres providers si besoin (movix, nakios...)
+              varRegex: /(var\s+TOFLIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
+              wikiUrl: 'https://toflix.wiki/'
+            }
           ];
 
           let modifiedCount = 0;
 
           for (const item of allItems) {
             const nom = item.nom;
-            const url = item.url;
-            if (!url) continue;
-
             for (const provider of providerMap) {
               if (provider.nameMatch.test(nom)) {
-                const filePath = provider.file;
-                if (!fs.existsSync(filePath)) {
-                  console.warn(`⚠️ Fichier ${filePath} introuvable, sautée`);
+                let tld = null;
+                // Si on a un wikiUrl, on extrait le domaine réel
+                if (provider.wikiUrl) {
+                  const domain = await fetchDomainFromWiki(provider.wikiUrl);
+                  if (domain) {
+                    // Extraire le TLD (dernière partie)
+                    const parts = domain.split('.');
+                    tld = parts.slice(1).join('.');
+                    console.log(`🔍 ${provider.file} : domaine extrait = ${domain} → TLD = ${tld}`);
+                  } else {
+                    console.warn(`⚠️ Aucun domaine trouvé pour ${nom}, on garde l’URL de sources.json`);
+                    // Fallback : extraire TLD depuis l'URL du wikipédia
+                    if (item.url) {
+                      try {
+                        const host = new URL(item.url).hostname;
+                        const parts = host.split('.');
+                        tld = parts.slice(1).join('.');
+                      } catch(e) {}
+                    }
+                  }
+                } else {
+                  // Pour les autres providers, on utilise l'URL de sources.json
+                  if (item.url) {
+                    try {
+                      const host = new URL(item.url).hostname;
+                      const parts = host.split('.');
+                      tld = parts.slice(1).join('.');
+                    } catch(e) {}
+                  }
+                }
+
+                if (!tld) {
+                  console.warn(`❌ Impossible d’extraire un TLD pour ${nom}`);
                   continue;
                 }
 
-                const tld = getTld(url);
-                if (!tld) {
-                  console.warn(`⚠️ Impossible d'extraire le TLD depuis ${url}`);
+                const filePath = provider.file;
+                if (!fs.existsSync(filePath)) {
+                  console.warn(`⚠️ Fichier ${filePath} introuvable`);
                   continue;
                 }
 
@@ -95,40 +129,12 @@ jobs:
                 const newContent = content.replace(provider.varRegex, `$1${tld}$3`);
                 if (newContent !== content) {
                   fs.writeFileSync(filePath, newContent, 'utf8');
-                  console.log(`✅ ${filePath} : ${provider.varName} = '${tld}' (depuis ${nom})`);
+                  console.log(`✅ ${filePath} : ${provider.varName} = '${tld}'`);
                   modifiedCount++;
-                } else {
-                  console.log(`ℹ️ ${filePath} : aucune modification nécessaire (déjà à jour ?)`);
                 }
-                break; // sortir de la boucle des providers une fois trouvé
+                break;
               }
             }
-          }
-
-          // Optionnel : mettre aussi à jour manifest.json si besoin
-          if (fs.existsSync('providers')) {
-            const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
-            const manifest = {
-              name: "Catalogue Ultime Nissay",
-              version: "1.0.0",
-              scrapers: files.map(file => {
-                const id = file.replace('.js', '');
-                return {
-                  id: `${id}_nissay`,
-                  name: id.toUpperCase(),
-                  description: `Extension synchronisée pour ${id}`,
-                  version: "1.0.0",
-                  author: "Nissay",
-                  supportedTypes: ["movie", "tv"],
-                  filename: `providers/${file}`,
-                  enabled: true,
-                  formats: ["mp4", "m3u8"],
-                  contentLanguage: ["fr"]
-                };
-              })
-            };
-            fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
-            console.log(`📄 manifest.json régénéré (${files.length} scrapers)`);
           }
 
           console.log(`\n🚀 Terminé. ${modifiedCount} fichier(s) provider modifié(s).`);
@@ -139,5 +145,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add providers/*.js manifest.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour automatique des providers (domaines depuis sources.json)"
+          git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mise à jour automatique des providers (domaines extraits des wikis)"
           git push
