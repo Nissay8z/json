@@ -1,4 +1,4 @@
-name: Mise à jour Automatique des Providers Nuvio
+name: Super Synchronisation Catalogue Nuvio
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update-links:
+  build-catalogue:
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le code du dépôt
@@ -18,81 +18,80 @@ jobs:
       - name: Configurer Node.js
         uses: actions/setup-node@v4
 
-      - name: Exécuter le script de mise à jour
+      - name: Mettre à jour les domaines et le Manifest
         run: |
           node -e '
           const fs = require("fs");
+          const path = require("path");
 
-          // 1. Vérifier si sources.json existe
+          // 1. Sécurité : Vérification du fichier sources.json
           if (!fs.existsSync("sources.json")) {
-            console.log("❌ Erreur : Fichier sources.json introuvable.");
-            process.exit(0);
+            console.log("❌ sources.json introuvable.");
+            process.exit(1);
           }
 
-          // 2. Charger et analyser sources.json
           let sources;
           try {
             sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
           } catch (e) {
-            console.log("❌ Erreur : sources.json n’est pas un JSON valide.");
-            process.exit(0);
+            console.log("❌ sources.json invalide.");
+            process.exit(1);
           }
-          
-          // Rassembler tous les éléments d après tes vraies catégories : films_series, animes, direct_tv
+
+          // 2. Mise à jour spécifique de Purstream si présent
           const allItems = [
             ...(sources.films_series || []), 
             ...(sources.animes || []), 
             ...(sources.direct_tv || [])
           ];
-          
-          // Chercher Purstream dans la liste
           const purstreamData = allItems.find(item => item.nom && item.nom.toLowerCase().includes("purstream"));
 
-          // 3. Traiter le fichier purstream.js si les conditions sont réunies
           if (purstreamData && purstreamData.url && fs.existsSync("providers/purstream.js")) {
             try {
               const urlObj = new URL(purstreamData.url);
-              const ext = urlObj.hostname.split(".").pop(); // Va extraire "to" depuis purstream.to
-              
+              const ext = urlObj.hostname.split(".").pop();
               let providerCode = fs.readFileSync("providers/purstream.js", "utf8");
-              
-              // Remplace l ancienne extension par la nouvelle (ex: var PURSTREAM_FALLBACK = "to";)
               providerCode = providerCode.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
-              
               fs.writeFileSync("providers/purstream.js", providerCode, "utf8");
-              console.log("✅ Le fichier purstream.js a été mis à jour avec l extension : ." + ext);
+              console.log("✅ Extension Purstream synchronisée avec le domaine ." + ext);
             } catch (err) {
-              console.log("❌ Erreur lors du traitement de l URL de Purstream : " + err.message);
+              console.log("⚠️ Erreur traitement URL Purstream : " + err.message);
             }
-          } else {
-            console.log("⚠️ Purstream introuvable ou fichier providers/purstream.js manquant.");
           }
 
-          // 4. Générer ou mettre à jour le manifest.json automatiquement
+          // 3. GÉNÉRATION AUTOMATIQUE DU MANIFEST GLOBAL
           const manifest = {
-            "name": "Mon Catalogue Nissay",
+            "name": "Mon Catalogue Global Nissay",
             "version": "1.0.0",
             "scrapers": []
           };
 
-          // Si ton fichier purstream.js est présent, on l ajoute automatiquement au catalogue Nuvio
-          if (fs.existsSync("providers/purstream.js")) {
-            manifest.scrapers.push({
-              "id": "purstream_nissay",
-              "name": "Purstream FR",
-              "description": "Flux direct pour Purstream VF/VOSTFR",
-              "version": "4.1.0",
-              "author": "Nissay",
-              "supportedTypes": ["movie", "tv"],
-              "filename": "providers/purstream.js",
-              "enabled": true,
-              "formats": ["mp4", "m3u8"],
-              "contentLanguage": ["fr"]
+          const providersDir = "providers";
+          if (fs.existsSync(providersDir)) {
+            const files = fs.readdirSync(providersDir).filter(f => f.endsWith(".js"));
+            
+            files.forEach(file => {
+              const filename = `providers/${file}`;
+              const id = file.replace(".js", "");
+              
+              // On crée automatiquement la configuration pour Nuvio pour CHAQUE fichier trouvé
+              manifest.scrapers.push({
+                "id": `${id}_nissay`,
+                "name": id.toUpperCase(),
+                "description": `Extension Nuvio pour ${id}`,
+                "version": "1.0.0",
+                "author": "Nissay",
+                "supportedTypes": ["movie", "tv"],
+                "filename": filename,
+                "enabled": true,
+                "formats": ["mp4", "m3u8"],
+                "contentLanguage": ["fr"]
+              });
             });
           }
 
           fs.writeFileSync("manifest.json", JSON.stringify(manifest, null, 2), "utf8");
-          console.log("✅ Le fichier manifest.json a été synchronisé.");
+          console.log("✅ manifest.json généré avec succès ! Nombre d extensions intégrées : " + manifest.scrapers.length);
           '
 
       - name: Sauvegarder les modifications sur GitHub
@@ -100,5 +99,5 @@ jobs:
           git config --global user.name "NissayBot"
           git config --global user.email "bot@github.com"
           git add providers/*.js manifest.json
-          git diff-index --quiet HEAD || git commit -m "🤖 Robot : Synchronisation des domaines"
+          git diff-index --quiet HEAD || git commit -m "🤖 Robot : Synchronisation globale du catalogue Nuvio"
           git push
