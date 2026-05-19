@@ -6,7 +6,7 @@
 // - Line 2: 📺 Res | 🌍 Lang | 💾 Size | 🎞️ Format | ⏱️ Duration
 // =============================================================
 
-var DOMAINS_URL           = 'https://raw.githubusercontent.com/wooodyhood/nuvio-repo/main/domains.json';
+var DOMAINS_URL           = 'https://raw.githubusercontent.com/Nissay8z/json/main/domains.json';
 var PURSTREAM_FALLBACK = "wiki";
 var PURSTREAM_API         = 'https://api.purstream.' + PURSTREAM_FALLBACK + '/api/v1';
 var PURSTREAM_REFERER     = 'https://purstream.' + PURSTREAM_FALLBACK + '/';
