@@ -19,81 +19,84 @@ jobs:
       - name: Mettre à jour les providers
         run: |
           node --input-type=commonjs << 'EOF'
-          const fs = require('fs');
-          const path = require('path');
+          (async () => {
+            const fs = require('fs');
+            const path = require('path');
 
-          // ----- 1) Fonction pour extraire un domaine depuis un wiki -----
-          async function fetchDomainFromWiki(url) {
-            try {
-              const resp = await fetch(url);
-              const html = await resp.text();
-              // Cas toflix.wiki : "Domaine actuel # toflix.fit"
-              let match = html.match(/Domaine actuel # ([a-z0-9.-]+)/i);
-              if (match) return match[1];
-              // Cas purstream.wiki : chercher "purstream.qqch"
-              match = html.match(/purstream\.[a-z]{2,}/i);
-              return match ? match[0] : null;
-            } catch(e) {
-              console.warn(`❌ Échec scraping ${url}`, e.message);
-              return null;
+            async function fetchDomainFromWiki(url) {
+              try {
+                const resp = await fetch(url);
+                const html = await resp.text();
+                let match = html.match(/Domaine actuel # ([a-z0-9.-]+)/i);
+                if (match) return match[1];
+                match = html.match(/purstream\.[a-z]{2,}/i);
+                return match ? match[0] : null;
+              } catch(e) {
+                console.warn(`❌ Échec scraping ${url}`, e.message);
+                return null;
+              }
             }
-          }
 
-          // ----- 2) Charger sources.json -----
-          if (!fs.existsSync('sources.json')) {
-            console.error('❌ sources.json introuvable');
-            process.exit(1);
-          }
-          const sources = JSON.parse(fs.readFileSync('sources.json', 'utf8'));
-          const allItems = [
-            ...(sources.films_series || []),
-            ...(sources.animes || []),
-            ...(sources.direct_tv || [])
-          ];
-
-          // ----- 3) Mapping provider -> fichier + variables + wiki -----
-          const providerMap = [
-            { 
-              nameMatch: /purstream/i, 
-              file: 'providers/purstream.js', 
-              varName: 'PURSTREAM_FALLBACK',
-              varRegex: /(var\s+PURSTREAM_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
-              wikiUrl: 'https://purstream.wiki/'
-            },
-            { 
-              nameMatch: /anime-sama/i, 
-              file: 'providers/anime-sama.js', 
-              varName: 'AS_FALLBACK',
-              varRegex: /(var\s+AS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
-              wikiUrl: null
-            },
-            { 
-              nameMatch: /toflix/i, 
-              file: 'providers/toflix.js', 
-              varName: 'TOFLIX_FALLBACK',
-              varRegex: /(var\s+TOFLIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
-              wikiUrl: 'https://toflix.wiki/'
+            if (!fs.existsSync('sources.json')) {
+              console.error('❌ sources.json introuvable');
+              process.exit(1);
             }
-          ];
+            const sources = JSON.parse(fs.readFileSync('sources.json', 'utf8'));
+            const allItems = [
+              ...(sources.films_series || []),
+              ...(sources.animes || []),
+              ...(sources.direct_tv || [])
+            ];
 
-          let modifiedCount = 0;
+            const providerMap = [
+              { 
+                nameMatch: /purstream/i, 
+                file: 'providers/purstream.js', 
+                varName: 'PURSTREAM_FALLBACK',
+                varRegex: /(var\s+PURSTREAM_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
+                wikiUrl: 'https://purstream.wiki/'
+              },
+              { 
+                nameMatch: /anime-sama/i, 
+                file: 'providers/anime-sama.js', 
+                varName: 'AS_FALLBACK',
+                varRegex: /(var\s+AS_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
+                wikiUrl: null
+              },
+              { 
+                nameMatch: /toflix/i, 
+                file: 'providers/toflix.js', 
+                varName: 'TOFLIX_FALLBACK',
+                varRegex: /(var\s+TOFLIX_FALLBACK\s*=\s*['"])([^'"]*)(['"])/i,
+                wikiUrl: 'https://toflix.wiki/'
+              }
+            ];
 
-          for (const item of allItems) {
-            const nom = item.nom;
-            for (const provider of providerMap) {
-              if (provider.nameMatch.test(nom)) {
-                let tld = null;
+            let modifiedCount = 0;
 
-                // Si le provider a un wiki, on extrait le domaine réel
-                if (provider.wikiUrl) {
-                  const domain = await fetchDomainFromWiki(provider.wikiUrl);
-                  if (domain) {
-                    const parts = domain.split('.');
-                    tld = parts.slice(1).join('.');  // ex: toflix.fit -> fit | purstream.cx -> cx
-                    console.log(`🔍 ${provider.file} : domaine extrait = ${domain} → TLD = ${tld}`);
+            for (const item of allItems) {
+              const nom = item.nom;
+              for (const provider of providerMap) {
+                if (provider.nameMatch.test(nom)) {
+                  let tld = null;
+
+                  if (provider.wikiUrl) {
+                    const domain = await fetchDomainFromWiki(provider.wikiUrl);
+                    if (domain) {
+                      const parts = domain.split('.');
+                      tld = parts.slice(1).join('.');
+                      console.log(`🔍 ${provider.file} : domaine extrait = ${domain} → TLD = ${tld}`);
+                    } else {
+                      console.warn(`⚠️ Aucun domaine trouvé via wiki pour ${nom}, fallback sur sources.json`);
+                      if (item.url) {
+                        try {
+                          const host = new URL(item.url).hostname;
+                          const parts = host.split('.');
+                          tld = parts.slice(1).join('.');
+                        } catch(e) {}
+                      }
+                    }
                   } else {
-                    console.warn(`⚠️ Aucun domaine trouvé via wiki pour ${nom}, fallback sur sources.json`);
-                    // Fallback : extraire TLD depuis l'URL de sources.json
                     if (item.url) {
                       try {
                         const host = new URL(item.url).hostname;
@@ -102,69 +105,59 @@ jobs:
                       } catch(e) {}
                     }
                   }
-                } else {
-                  // Providers sans wiki : on utilise l'URL de sources.json
-                  if (item.url) {
-                    try {
-                      const host = new URL(item.url).hostname;
-                      const parts = host.split('.');
-                      tld = parts.slice(1).join('.');
-                    } catch(e) {}
+
+                  if (!tld) {
+                    console.warn(`❌ Impossible d'extraire un TLD pour ${nom}`);
+                    continue;
                   }
-                }
 
-                if (!tld) {
-                  console.warn(`❌ Impossible d'extraire un TLD pour ${nom}`);
-                  continue;
-                }
+                  const filePath = provider.file;
+                  if (!fs.existsSync(filePath)) {
+                    console.warn(`⚠️ Fichier ${filePath} introuvable, sautée`);
+                    continue;
+                  }
 
-                const filePath = provider.file;
-                if (!fs.existsSync(filePath)) {
-                  console.warn(`⚠️ Fichier ${filePath} introuvable, sautée`);
-                  continue;
+                  let content = fs.readFileSync(filePath, 'utf8');
+                  const newContent = content.replace(provider.varRegex, `$1${tld}$3`);
+                  if (newContent !== content) {
+                    fs.writeFileSync(filePath, newContent, 'utf8');
+                    console.log(`✅ ${filePath} : ${provider.varName} = '${tld}'`);
+                    modifiedCount++;
+                  } else {
+                    console.log(`ℹ️ ${filePath} : aucune modification nécessaire`);
+                  }
+                  break;
                 }
-
-                let content = fs.readFileSync(filePath, 'utf8');
-                const newContent = content.replace(provider.varRegex, `$1${tld}$3`);
-                if (newContent !== content) {
-                  fs.writeFileSync(filePath, newContent, 'utf8');
-                  console.log(`✅ ${filePath} : ${provider.varName} = '${tld}'`);
-                  modifiedCount++;
-                } else {
-                  console.log(`ℹ️ ${filePath} : aucune modification nécessaire`);
-                }
-                break;
               }
             }
-          }
 
-          // Optionnel : régénérer manifest.json
-          if (fs.existsSync('providers')) {
-            const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
-            const manifest = {
-              name: "Catalogue Ultime Nissay",
-              version: "1.0.0",
-              scrapers: files.map(file => {
-                const id = file.replace('.js', '');
-                return {
-                  id: `${id}_nissay`,
-                  name: id.toUpperCase(),
-                  description: `Extension synchronisée pour ${id}`,
-                  version: "1.0.0",
-                  author: "Nissay",
-                  supportedTypes: ["movie", "tv"],
-                  filename: `providers/${file}`,
-                  enabled: true,
-                  formats: ["mp4", "m3u8"],
-                  contentLanguage: ["fr"]
-                };
-              })
-            };
-            fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
-            console.log(`📄 manifest.json régénéré (${files.length} scrapers)`);
-          }
+            if (fs.existsSync('providers')) {
+              const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
+              const manifest = {
+                name: "Catalogue Ultime Nissay",
+                version: "1.0.0",
+                scrapers: files.map(file => {
+                  const id = file.replace('.js', '');
+                  return {
+                    id: `${id}_nissay`,
+                    name: id.toUpperCase(),
+                    description: `Extension synchronisée pour ${id}`,
+                    version: "1.0.0",
+                    author: "Nissay",
+                    supportedTypes: ["movie", "tv"],
+                    filename: `providers/${file}`,
+                    enabled: true,
+                    formats: ["mp4", "m3u8"],
+                    contentLanguage: ["fr"]
+                  };
+                })
+              };
+              fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
+              console.log(`📄 manifest.json régénéré (${files.length} scrapers)`);
+            }
 
-          console.log(`\n🚀 Terminé. ${modifiedCount} fichier(s) provider modifié(s).`);
+            console.log(`\n🚀 Terminé. ${modifiedCount} fichier(s) provider modifié(s).`);
+          })();
           EOF
 
       - name: Commit et push des changements
