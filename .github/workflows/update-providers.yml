@@ -3,7 +3,7 @@ name: Mise à jour Automatique des Providers Nuvio
 on:
   push:
     paths:
-      - 'sources.json' # Le robot se réveille dès que tu modifies ce fichier
+      - 'sources.json'
 
 permissions:
   contents: write
@@ -17,47 +17,80 @@ jobs:
 
       - name: Configurer Node.js
         uses: actions/setup-node@v4
-        with:
-          node-cache: 'npm'
 
       - name: Exécuter le script de mise à jour
         run: |
           node -e '
           const fs = require("fs");
 
-          // 1. Lire les nouvelles URL depuis sources.json
+          // 1. Sécurité : Vérifier si sources.json existe
           if (!fs.existsSync("sources.json")) {
-            console.log("Fichier sources.json introuvable.");
+            console.log("❌ Erreur : Fichier sources.json introuvable.");
             process.exit(0);
           }
-          const sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
-          
-          // Trouver l url de Purstream dans ton JSON
-          // Le script cherche l élément qui s appelle "Purstream" (adapte le nom si besoin)
-          const allItems = [...(sources.films_series || []), ...(sources.animes || []), ...(sources.tv || [])];
-          const purstreamData = allItems.find(item => item.nom.toLowerCase().includes("purstream"));
 
-          if (purstreamData && fs.existsSync("providers/purstream.js")) {
-            const urlObj = new URL(purstreamData.url);
-            const ext = urlObj.hostname.split(".").pop(); // Récupère juste l extension (ex: "cx" ou "art")
-            
-            // 2. Modifier le fichier purstream.js
-            let providerCode = fs.readFileSync("providers/purstream.js", "utf8");
-            
-            // Remplace la ligne du fallback par la nouvelle extension
-            providerCode = providerCode.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
-            
-            fs.writeFileSync("providers/purstream.js", providerCode, "utf8");
-            console.log("Le fichier purstream.js a été mis à jour avec l extension : ." + ext);
-          } else {
-            console.log("Purstream non trouvé dans sources.json ou dossier providers/ vide.");
+          // 2. Lire sources.json
+          let sources;
+          try {
+            sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
+          } catch (e) {
+            console.log("❌ Erreur : sources.json n’est pas un JSON valide.");
+            process.exit(0);
           }
+          
+          // Rassembler tous les éléments pour chercher Purstream
+          const allItems = [...(sources.films_series || []), ...(sources.animes || []), ...(sources.tv || [])];
+          const purstreamData = allItems.find(item => item.nom && item.nom.toLowerCase().includes("purstream"));
+
+          // 3. Traitement de Purstream si trouvé
+          if (purstreamData && purstreamData.url && fs.existsSync("providers/purstream.js")) {
+            try {
+              const urlObj = new URL(purstreamData.url);
+              const ext = urlObj.hostname.split(".").pop(); // ex: "art" ou "cx"
+              
+              // Modifier purstream.js
+              let providerCode = fs.readFileSync("providers/purstream.js", "utf8");
+              providerCode = providerCode.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
+              fs.writeFileSync("providers/purstream.js", providerCode, "utf8");
+              console.log("✅ Le fichier purstream.js a bien été mis à jour avec l extension : ." + ext);
+            } catch (err) {
+              console.log("❌ Erreur lors de la lecture de l URL de Purstream : " + err.message);
+            }
+          } else {
+            console.log("⚠️ Purstream absent de sources.json ou fichier providers/purstream.js manquant. On continue...");
+          }
+
+          // 4. Générer AUTOMATIQUEMENT le manifest.json pour Nuvio
+          const manifest = {
+            "name": "Mon Catalogue Nissay",
+            "version": "1.0.0",
+            "scrapers": []
+          };
+
+          // Si le fichier purstream existe, on l ajoute automatiquement au manifest
+          if (fs.existsSync("providers/purstream.js")) {
+            manifest.scrapers.push({
+              "id": "purstream_nissay",
+              "name": "Purstream FR",
+              "description": "Flux direct pour Purstream VF/VOSTFR",
+              "version": "4.1.0",
+              "author": "Nissay",
+              "supportedTypes": ["movie", "tv"],
+              "filename": "providers/purstream.js",
+              "enabled": true,
+              "formats": ["mp4", "m3u8"],
+              "contentLanguage": ["fr"]
+            });
+          }
+
+          fs.writeFileSync("manifest.json", JSON.stringify(manifest, null, 2), "utf8");
+          console.log("✅ Le fichier manifest.json a été synchronisé.");
           '
 
       - name: Sauvegarder les modifications sur GitHub
         run: |
           git config --global user.name "NissayBot"
           git config --global user.email "bot@github.com"
-          git add providers/*.js
-          git diff-index --quiet HEAD || git commit -m "🤖 Robot : Mise à jour automatique des domaines"
+          git add providers/*.js manifest.json
+          git diff-index --quiet HEAD || git commit -m "🤖 Robot : Mise à jour automatique des domaines et du manifest"
           git push
