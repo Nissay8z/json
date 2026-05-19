@@ -1,0 +1,63 @@
+name: Mise à jour Automatique des Providers Nuvio
+
+on:
+  push:
+    paths:
+      - 'sources.json' # Le robot se réveille dès que tu modifies ce fichier
+
+permissions:
+  contents: write
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-cache: 'npm'
+
+      - name: Exécuter le script de mise à jour
+        run: |
+          node -e '
+          const fs = require("fs");
+
+          // 1. Lire les nouvelles URL depuis sources.json
+          if (!fs.existsSync("sources.json")) {
+            console.log("Fichier sources.json introuvable.");
+            process.exit(0);
+          }
+          const sources = JSON.parse(fs.readFileSync("sources.json", "utf8"));
+          
+          // Trouver l url de Purstream dans ton JSON
+          // Le script cherche l élément qui s appelle "Purstream" (adapte le nom si besoin)
+          const allItems = [...(sources.films_series || []), ...(sources.animes || []), ...(sources.tv || [])];
+          const purstreamData = allItems.find(item => item.nom.toLowerCase().includes("purstream"));
+
+          if (purstreamData && fs.existsSync("providers/purstream.js")) {
+            const urlObj = new URL(purstreamData.url);
+            const ext = urlObj.hostname.split(".").pop(); // Récupère juste l extension (ex: "cx" ou "art")
+            
+            // 2. Modifier le fichier purstream.js
+            let providerCode = fs.readFileSync("providers/purstream.js", "utf8");
+            
+            // Remplace la ligne du fallback par la nouvelle extension
+            providerCode = providerCode.replace(/var PURSTREAM_FALLBACK\s*=\s*['"'].*?['"'];/, `var PURSTREAM_FALLBACK = "${ext}";`);
+            
+            fs.writeFileSync("providers/purstream.js", providerCode, "utf8");
+            console.log("Le fichier purstream.js a été mis à jour avec l extension : ." + ext);
+          } else {
+            console.log("Purstream non trouvé dans sources.json ou dossier providers/ vide.");
+          }
+          '
+
+      - name: Sauvegarder les modifications sur GitHub
+        run: |
+          git config --global user.name "NissayBot"
+          git config --global user.email "bot@github.com"
+          git add providers/*.js
+          git diff-index --quiet HEAD || git commit -m "🤖 Robot : Mise à jour automatique des domaines"
+          git push
