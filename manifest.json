@@ -5,7 +5,7 @@
     {
       "id": "4khdhub_nissay",
       "name": "4KHDHUB",
-      "description": "Extension synchronisée pour 4khdhub",
+      "description": "Extension pour 4khdhub",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -13,19 +13,12 @@
         "tv"
       ],
       "filename": "providers/4khdhub.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "4khdhubnew_nissay",
       "name": "4KHDHUBNEW",
-      "description": "Extension synchronisée pour 4khdhubnew",
+      "description": "Extension pour 4khdhubnew",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -33,19 +26,12 @@
         "tv"
       ],
       "filename": "providers/4khdhubnew.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "allanime_nissay",
       "name": "ALLANIME",
-      "description": "Extension synchronisée pour allanime",
+      "description": "Extension pour allanime",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -53,19 +39,12 @@
         "tv"
       ],
       "filename": "providers/allanime.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "allmovieland_nissay",
       "name": "ALLMOVIELAND",
-      "description": "Extension synchronisée pour allmovieland",
+      "description": "Extension pour allmovieland",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -73,19 +52,12 @@
         "tv"
       ],
       "filename": "providers/allmovieland.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "allwish_nissay",
       "name": "ALLWISH",
-      "description": "Extension synchronisée pour allwish",
+      "description": "Extension pour allwish",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -93,19 +65,12 @@
         "tv"
       ],
       "filename": "providers/allwish.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "anime-sama_nissay",
       "name": "ANIME-SAMA",
-      "description": "Extension synchronisée pour anime-sama",
+      "description": "Extension pour anime-sama",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -113,19 +78,12 @@
         "tv"
       ],
       "filename": "providers/anime-sama.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "animekai_nissay",
       "name": "ANIMEKAI",
-      "description": "Extension synchronisée pour animekai",
+      "description": "Extension pour animekai",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -133,19 +91,12 @@
         "tv"
       ],
       "filename": "providers/animekai.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "animepahe_nissay",
       "name": "ANIMEPAHE",
-      "description": "Extension synchronisée pour animepahe",
+      "description": "Extension pour animepahe",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -153,19 +104,12 @@
         "tv"
       ],
       "filename": "providers/animepahe.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "animesalt_nissay",
       "name": "ANIMESALT",
-      "description": "Extension synchronisée pour animesalt",
+      "description": "Extension pour animesalt",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -173,19 +117,12 @@
         "tv"
       ],
       "filename": "providers/animesalt.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "animeworld_nissay",
       "name": "ANIMEWORLD",
-      "description": "Extension synchronisée pour animeworld",
+      "description": "Extension pour animeworld",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -193,19 +130,12 @@
         "tv"
       ],
       "filename": "providers/animeworld.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "brazucaplay_nissay",
       "name": "BRAZUCAPLAY",
-      "description": "Extension synchronisée pour brazucaplay",
+      "description": "Extension pour brazucaplay",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -213,19 +143,12 @@
         "tv"
       ],
       "filename": "providers/brazucaplay.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "castle_nissay",
       "name": "CASTLE",
-      "description": "Extension synchronisée pour castle",
+      "description": "Extension pour castle",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -233,19 +156,12 @@
         "tv"
       ],
       "filename": "providers/castle.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "cinemacity_nissay",
       "name": "CINEMACITY",
-      "description": "Extension synchronisée pour cinemacity",
+      "description": "Extension pour cinemacity",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -253,19 +169,12 @@
         "tv"
       ],
       "filename": "providers/cinemacity.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "cinemm_nissay",
       "name": "CINEMM",
-      "description": "Extension synchronisée pour cinemm",
+      "description": "Extension pour cinemm",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -273,19 +182,12 @@
         "tv"
       ],
       "filename": "providers/cinemm.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "cinestream_nissay",
       "name": "CINESTREAM",
-      "description": "Extension synchronisée pour cinestream",
+      "description": "Extension pour cinestream",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -293,19 +195,12 @@
         "tv"
       ],
       "filename": "providers/cinestream.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "dahmermovies-4k_nissay",
       "name": "DAHMERMOVIES-4K",
-      "description": "Extension synchronisée pour dahmermovies-4k",
+      "description": "Extension pour dahmermovies-4k",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -313,19 +208,12 @@
         "tv"
       ],
       "filename": "providers/dahmermovies-4k.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "dahmermovies_nissay",
       "name": "DAHMERMOVIES",
-      "description": "Extension synchronisée pour dahmermovies",
+      "description": "Extension pour dahmermovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -333,19 +221,12 @@
         "tv"
       ],
       "filename": "providers/dahmermovies.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "dooflix_nissay",
       "name": "DOOFLIX",
-      "description": "Extension synchronisée pour dooflix",
+      "description": "Extension pour dooflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -353,19 +234,12 @@
         "tv"
       ],
       "filename": "providers/dooflix.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "embed69_nissay",
       "name": "EMBED69",
-      "description": "Extension synchronisée pour embed69",
+      "description": "Extension pour embed69",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -373,19 +247,12 @@
         "tv"
       ],
       "filename": "providers/embed69.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "hdhub4u_nissay",
       "name": "HDHUB4U",
-      "description": "Extension synchronisée pour hdhub4u",
+      "description": "Extension pour hdhub4u",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -393,19 +260,12 @@
         "tv"
       ],
       "filename": "providers/hdhub4u.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "hdmovie2_nissay",
       "name": "HDMOVIE2",
-      "description": "Extension synchronisée pour hdmovie2",
+      "description": "Extension pour hdmovie2",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -413,19 +273,12 @@
         "tv"
       ],
       "filename": "providers/hdmovie2.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "hindmoviez_nissay",
       "name": "HINDMOVIEZ",
-      "description": "Extension synchronisée pour hindmoviez",
+      "description": "Extension pour hindmoviez",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -433,19 +286,12 @@
         "tv"
       ],
       "filename": "providers/hindmoviez.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "isaidub_nissay",
       "name": "ISAIDUB",
-      "description": "Extension synchronisée pour isaidub",
+      "description": "Extension pour isaidub",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -453,19 +299,12 @@
         "tv"
       ],
       "filename": "providers/isaidub.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "kisskh_nissay",
       "name": "KISSKH",
-      "description": "Extension synchronisée pour kisskh",
+      "description": "Extension pour kisskh",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -473,19 +312,12 @@
         "tv"
       ],
       "filename": "providers/kisskh.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "lamovie_nissay",
       "name": "LAMOVIE",
-      "description": "Extension synchronisée pour lamovie",
+      "description": "Extension pour lamovie",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -493,19 +325,12 @@
         "tv"
       ],
       "filename": "providers/lamovie.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "lordflix_nissay",
       "name": "LORDFLIX",
-      "description": "Extension synchronisée pour lordflix",
+      "description": "Extension pour lordflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -513,19 +338,12 @@
         "tv"
       ],
       "filename": "providers/lordflix.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "movieblast_nissay",
       "name": "MOVIEBLAST",
-      "description": "Extension synchronisée pour movieblast",
+      "description": "Extension pour movieblast",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -533,19 +351,12 @@
         "tv"
       ],
       "filename": "providers/movieblast.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "moviebox_nissay",
       "name": "MOVIEBOX",
-      "description": "Extension synchronisée pour moviebox",
+      "description": "Extension pour moviebox",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -553,19 +364,12 @@
         "tv"
       ],
       "filename": "providers/moviebox.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "movieboxhindi_nissay",
       "name": "MOVIEBOXHINDI",
-      "description": "Extension synchronisée pour movieboxhindi",
+      "description": "Extension pour movieboxhindi",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -573,19 +377,12 @@
         "tv"
       ],
       "filename": "providers/movieboxhindi.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "moviesmod_nissay",
       "name": "MOVIESMOD",
-      "description": "Extension synchronisée pour moviesmod",
+      "description": "Extension pour moviesmod",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -593,19 +390,12 @@
         "tv"
       ],
       "filename": "providers/moviesmod.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "movix_nissay",
       "name": "MOVIX",
-      "description": "Extension synchronisée pour movix",
+      "description": "Extension pour movix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -613,19 +403,12 @@
         "tv"
       ],
       "filename": "providers/movix.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "multivid_nissay",
       "name": "MULTIVID",
-      "description": "Extension synchronisée pour multivid",
+      "description": "Extension pour multivid",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -633,19 +416,12 @@
         "tv"
       ],
       "filename": "providers/multivid.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "nakios_nissay",
       "name": "NAKIOS",
-      "description": "Extension synchronisée pour nakios",
+      "description": "Extension pour nakios",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -653,19 +429,12 @@
         "tv"
       ],
       "filename": "providers/nakios.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "netmirror_nissay",
       "name": "NETMIRROR",
-      "description": "Extension synchronisée pour netmirror",
+      "description": "Extension pour netmirror",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -673,19 +442,12 @@
         "tv"
       ],
       "filename": "providers/netmirror.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "netmirrornew_nissay",
       "name": "NETMIRRORNEW",
-      "description": "Extension synchronisée pour netmirrornew",
+      "description": "Extension pour netmirrornew",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -693,19 +455,12 @@
         "tv"
       ],
       "filename": "providers/netmirrornew.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "notorrent_nissay",
       "name": "NOTORRENT",
-      "description": "Extension synchronisée pour notorrent",
+      "description": "Extension pour notorrent",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -713,19 +468,12 @@
         "tv"
       ],
       "filename": "providers/notorrent.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "onetouchtv_nissay",
       "name": "ONETOUCHTV",
-      "description": "Extension synchronisée pour onetouchtv",
+      "description": "Extension pour onetouchtv",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -733,19 +481,12 @@
         "tv"
       ],
       "filename": "providers/onetouchtv.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "onlykdrama_nissay",
       "name": "ONLYKDRAMA",
-      "description": "Extension synchronisée pour onlykdrama",
+      "description": "Extension pour onlykdrama",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -753,19 +494,12 @@
         "tv"
       ],
       "filename": "providers/onlykdrama.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "peachify_nissay",
       "name": "PEACHIFY",
-      "description": "Extension synchronisée pour peachify",
+      "description": "Extension pour peachify",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -773,19 +507,12 @@
         "tv"
       ],
       "filename": "providers/peachify.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "playimdb_nissay",
       "name": "PLAYIMDB",
-      "description": "Extension synchronisée pour playimdb",
+      "description": "Extension pour playimdb",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -793,19 +520,12 @@
         "tv"
       ],
       "filename": "providers/playimdb.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "playimdb_v2_nissay",
       "name": "PLAYIMDB_V2",
-      "description": "Extension synchronisée pour playimdb_v2",
+      "description": "Extension pour playimdb_v2",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -813,19 +533,12 @@
         "tv"
       ],
       "filename": "providers/playimdb_v2.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "purstream_nissay",
       "name": "PURSTREAM",
-      "description": "Extension synchronisée pour purstream",
+      "description": "Extension pour purstream",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -833,19 +546,25 @@
         "tv"
       ],
       "filename": "providers/purstream.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
+      "enabled": true
+    },
+    {
+      "id": "senpai_nissay",
+      "name": "SENPAI",
+      "description": "Extension pour senpai",
+      "version": "1.0.0",
+      "author": "Nissay",
+      "supportedTypes": [
+        "movie",
+        "tv"
       ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "filename": "providers/senpai.js",
+      "enabled": true
     },
     {
       "id": "showbox_nissay",
       "name": "SHOWBOX",
-      "description": "Extension synchronisée pour showbox",
+      "description": "Extension pour showbox",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -853,19 +572,12 @@
         "tv"
       ],
       "filename": "providers/showbox.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "streamflix_nissay",
       "name": "STREAMFLIX",
-      "description": "Extension synchronisée pour streamflix",
+      "description": "Extension pour streamflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -873,19 +585,12 @@
         "tv"
       ],
       "filename": "providers/streamflix.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "toflix_nissay",
       "name": "TOFLIX",
-      "description": "Extension synchronisée pour toflix",
+      "description": "Extension pour toflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -893,19 +598,12 @@
         "tv"
       ],
       "filename": "providers/toflix.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "uhdmovies_nissay",
       "name": "UHDMOVIES",
-      "description": "Extension synchronisée pour uhdmovies",
+      "description": "Extension pour uhdmovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -913,19 +611,12 @@
         "tv"
       ],
       "filename": "providers/uhdmovies.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "vegamovies_nissay",
       "name": "VEGAMOVIES",
-      "description": "Extension synchronisée pour vegamovies",
+      "description": "Extension pour vegamovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -933,19 +624,12 @@
         "tv"
       ],
       "filename": "providers/vegamovies.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "videasy_nissay",
       "name": "VIDEASY",
-      "description": "Extension synchronisée pour videasy",
+      "description": "Extension pour videasy",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -953,19 +637,12 @@
         "tv"
       ],
       "filename": "providers/videasy.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "vidlink_nissay",
       "name": "VIDLINK",
-      "description": "Extension synchronisée pour vidlink",
+      "description": "Extension pour vidlink",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -973,19 +650,12 @@
         "tv"
       ],
       "filename": "providers/vidlink.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "vidsrc_nissay",
       "name": "VIDSRC",
-      "description": "Extension synchronisée pour vidsrc",
+      "description": "Extension pour vidsrc",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -993,19 +663,12 @@
         "tv"
       ],
       "filename": "providers/vidsrc.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "vidsync_nissay",
       "name": "VIDSYNC",
-      "description": "Extension synchronisée pour vidsync",
+      "description": "Extension pour vidsync",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1013,19 +676,12 @@
         "tv"
       ],
       "filename": "providers/vidsync.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "vixsrc_nissay",
       "name": "VIXSRC",
-      "description": "Extension synchronisée pour vixsrc",
+      "description": "Extension pour vixsrc",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1033,19 +689,12 @@
         "tv"
       ],
       "filename": "providers/vixsrc.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "xpass_nissay",
       "name": "XPASS",
-      "description": "Extension synchronisée pour xpass",
+      "description": "Extension pour xpass",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1053,19 +702,12 @@
         "tv"
       ],
       "filename": "providers/xpass.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     },
     {
       "id": "zinkmovies_nissay",
       "name": "ZINKMOVIES",
-      "description": "Extension synchronisée pour zinkmovies",
+      "description": "Extension pour zinkmovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1073,14 +715,7 @@
         "tv"
       ],
       "filename": "providers/zinkmovies.js",
-      "enabled": true,
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "contentLanguage": [
-        "fr"
-      ]
+      "enabled": true
     }
   ]
 }
