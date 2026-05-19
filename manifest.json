@@ -1,11 +1,11 @@
 {
-  "name": "Mon Catalogue Global Nissay",
+  "name": "Catalogue Ultime Nissay",
   "version": "1.0.0",
   "scrapers": [
     {
       "id": "4khdhub_nissay",
       "name": "4KHDHUB",
-      "description": "Extension Nuvio pour 4khdhub",
+      "description": "Extension synchronisée pour 4khdhub",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -25,7 +25,7 @@
     {
       "id": "4khdhubnew_nissay",
       "name": "4KHDHUBNEW",
-      "description": "Extension Nuvio pour 4khdhubnew",
+      "description": "Extension synchronisée pour 4khdhubnew",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -45,7 +45,7 @@
     {
       "id": "allanime_nissay",
       "name": "ALLANIME",
-      "description": "Extension Nuvio pour allanime",
+      "description": "Extension synchronisée pour allanime",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -65,7 +65,7 @@
     {
       "id": "allmovieland_nissay",
       "name": "ALLMOVIELAND",
-      "description": "Extension Nuvio pour allmovieland",
+      "description": "Extension synchronisée pour allmovieland",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -85,7 +85,7 @@
     {
       "id": "allwish_nissay",
       "name": "ALLWISH",
-      "description": "Extension Nuvio pour allwish",
+      "description": "Extension synchronisée pour allwish",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -105,7 +105,7 @@
     {
       "id": "anime-sama_nissay",
       "name": "ANIME-SAMA",
-      "description": "Extension Nuvio pour anime-sama",
+      "description": "Extension synchronisée pour anime-sama",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -125,7 +125,7 @@
     {
       "id": "animekai_nissay",
       "name": "ANIMEKAI",
-      "description": "Extension Nuvio pour animekai",
+      "description": "Extension synchronisée pour animekai",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -145,7 +145,7 @@
     {
       "id": "animepahe_nissay",
       "name": "ANIMEPAHE",
-      "description": "Extension Nuvio pour animepahe",
+      "description": "Extension synchronisée pour animepahe",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -165,7 +165,7 @@
     {
       "id": "animesalt_nissay",
       "name": "ANIMESALT",
-      "description": "Extension Nuvio pour animesalt",
+      "description": "Extension synchronisée pour animesalt",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -185,7 +185,7 @@
     {
       "id": "animeworld_nissay",
       "name": "ANIMEWORLD",
-      "description": "Extension Nuvio pour animeworld",
+      "description": "Extension synchronisée pour animeworld",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -205,7 +205,7 @@
     {
       "id": "brazucaplay_nissay",
       "name": "BRAZUCAPLAY",
-      "description": "Extension Nuvio pour brazucaplay",
+      "description": "Extension synchronisée pour brazucaplay",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -225,7 +225,7 @@
     {
       "id": "castle_nissay",
       "name": "CASTLE",
-      "description": "Extension Nuvio pour castle",
+      "description": "Extension synchronisée pour castle",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -245,7 +245,7 @@
     {
       "id": "cinemacity_nissay",
       "name": "CINEMACITY",
-      "description": "Extension Nuvio pour cinemacity",
+      "description": "Extension synchronisée pour cinemacity",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -265,7 +265,7 @@
     {
       "id": "cinemm_nissay",
       "name": "CINEMM",
-      "description": "Extension Nuvio pour cinemm",
+      "description": "Extension synchronisée pour cinemm",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -285,7 +285,7 @@
     {
       "id": "cinestream_nissay",
       "name": "CINESTREAM",
-      "description": "Extension Nuvio pour cinestream",
+      "description": "Extension synchronisée pour cinestream",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -305,7 +305,7 @@
     {
       "id": "dahmermovies-4k_nissay",
       "name": "DAHMERMOVIES-4K",
-      "description": "Extension Nuvio pour dahmermovies-4k",
+      "description": "Extension synchronisée pour dahmermovies-4k",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -325,7 +325,7 @@
     {
       "id": "dahmermovies_nissay",
       "name": "DAHMERMOVIES",
-      "description": "Extension Nuvio pour dahmermovies",
+      "description": "Extension synchronisée pour dahmermovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -345,7 +345,7 @@
     {
       "id": "dooflix_nissay",
       "name": "DOOFLIX",
-      "description": "Extension Nuvio pour dooflix",
+      "description": "Extension synchronisée pour dooflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -365,7 +365,7 @@
     {
       "id": "embed69_nissay",
       "name": "EMBED69",
-      "description": "Extension Nuvio pour embed69",
+      "description": "Extension synchronisée pour embed69",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -385,7 +385,7 @@
     {
       "id": "hdhub4u_nissay",
       "name": "HDHUB4U",
-      "description": "Extension Nuvio pour hdhub4u",
+      "description": "Extension synchronisée pour hdhub4u",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -405,7 +405,7 @@
     {
       "id": "hdmovie2_nissay",
       "name": "HDMOVIE2",
-      "description": "Extension Nuvio pour hdmovie2",
+      "description": "Extension synchronisée pour hdmovie2",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -425,7 +425,7 @@
     {
       "id": "hindmoviez_nissay",
       "name": "HINDMOVIEZ",
-      "description": "Extension Nuvio pour hindmoviez",
+      "description": "Extension synchronisée pour hindmoviez",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -445,7 +445,7 @@
     {
       "id": "isaidub_nissay",
       "name": "ISAIDUB",
-      "description": "Extension Nuvio pour isaidub",
+      "description": "Extension synchronisée pour isaidub",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -465,7 +465,7 @@
     {
       "id": "kisskh_nissay",
       "name": "KISSKH",
-      "description": "Extension Nuvio pour kisskh",
+      "description": "Extension synchronisée pour kisskh",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -485,7 +485,7 @@
     {
       "id": "lamovie_nissay",
       "name": "LAMOVIE",
-      "description": "Extension Nuvio pour lamovie",
+      "description": "Extension synchronisée pour lamovie",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -505,7 +505,7 @@
     {
       "id": "lordflix_nissay",
       "name": "LORDFLIX",
-      "description": "Extension Nuvio pour lordflix",
+      "description": "Extension synchronisée pour lordflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -525,7 +525,7 @@
     {
       "id": "movieblast_nissay",
       "name": "MOVIEBLAST",
-      "description": "Extension Nuvio pour movieblast",
+      "description": "Extension synchronisée pour movieblast",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -545,7 +545,7 @@
     {
       "id": "moviebox_nissay",
       "name": "MOVIEBOX",
-      "description": "Extension Nuvio pour moviebox",
+      "description": "Extension synchronisée pour moviebox",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -565,7 +565,7 @@
     {
       "id": "movieboxhindi_nissay",
       "name": "MOVIEBOXHINDI",
-      "description": "Extension Nuvio pour movieboxhindi",
+      "description": "Extension synchronisée pour movieboxhindi",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -585,7 +585,7 @@
     {
       "id": "moviesmod_nissay",
       "name": "MOVIESMOD",
-      "description": "Extension Nuvio pour moviesmod",
+      "description": "Extension synchronisée pour moviesmod",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -605,7 +605,7 @@
     {
       "id": "movix_nissay",
       "name": "MOVIX",
-      "description": "Extension Nuvio pour movix",
+      "description": "Extension synchronisée pour movix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -625,7 +625,7 @@
     {
       "id": "multivid_nissay",
       "name": "MULTIVID",
-      "description": "Extension Nuvio pour multivid",
+      "description": "Extension synchronisée pour multivid",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -645,7 +645,7 @@
     {
       "id": "nakios_nissay",
       "name": "NAKIOS",
-      "description": "Extension Nuvio pour nakios",
+      "description": "Extension synchronisée pour nakios",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -665,7 +665,7 @@
     {
       "id": "netmirror_nissay",
       "name": "NETMIRROR",
-      "description": "Extension Nuvio pour netmirror",
+      "description": "Extension synchronisée pour netmirror",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -685,7 +685,7 @@
     {
       "id": "netmirrornew_nissay",
       "name": "NETMIRRORNEW",
-      "description": "Extension Nuvio pour netmirrornew",
+      "description": "Extension synchronisée pour netmirrornew",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -705,7 +705,7 @@
     {
       "id": "notorrent_nissay",
       "name": "NOTORRENT",
-      "description": "Extension Nuvio pour notorrent",
+      "description": "Extension synchronisée pour notorrent",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -725,7 +725,7 @@
     {
       "id": "onetouchtv_nissay",
       "name": "ONETOUCHTV",
-      "description": "Extension Nuvio pour onetouchtv",
+      "description": "Extension synchronisée pour onetouchtv",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -745,7 +745,7 @@
     {
       "id": "onlykdrama_nissay",
       "name": "ONLYKDRAMA",
-      "description": "Extension Nuvio pour onlykdrama",
+      "description": "Extension synchronisée pour onlykdrama",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -765,7 +765,7 @@
     {
       "id": "peachify_nissay",
       "name": "PEACHIFY",
-      "description": "Extension Nuvio pour peachify",
+      "description": "Extension synchronisée pour peachify",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -785,7 +785,7 @@
     {
       "id": "playimdb_nissay",
       "name": "PLAYIMDB",
-      "description": "Extension Nuvio pour playimdb",
+      "description": "Extension synchronisée pour playimdb",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -805,7 +805,7 @@
     {
       "id": "playimdb_v2_nissay",
       "name": "PLAYIMDB_V2",
-      "description": "Extension Nuvio pour playimdb_v2",
+      "description": "Extension synchronisée pour playimdb_v2",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -825,7 +825,7 @@
     {
       "id": "purstream_nissay",
       "name": "PURSTREAM",
-      "description": "Extension Nuvio pour purstream",
+      "description": "Extension synchronisée pour purstream",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -845,7 +845,7 @@
     {
       "id": "showbox_nissay",
       "name": "SHOWBOX",
-      "description": "Extension Nuvio pour showbox",
+      "description": "Extension synchronisée pour showbox",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -865,7 +865,7 @@
     {
       "id": "streamflix_nissay",
       "name": "STREAMFLIX",
-      "description": "Extension Nuvio pour streamflix",
+      "description": "Extension synchronisée pour streamflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -885,7 +885,7 @@
     {
       "id": "toflix_nissay",
       "name": "TOFLIX",
-      "description": "Extension Nuvio pour toflix",
+      "description": "Extension synchronisée pour toflix",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -905,7 +905,7 @@
     {
       "id": "uhdmovies_nissay",
       "name": "UHDMOVIES",
-      "description": "Extension Nuvio pour uhdmovies",
+      "description": "Extension synchronisée pour uhdmovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -925,7 +925,7 @@
     {
       "id": "vegamovies_nissay",
       "name": "VEGAMOVIES",
-      "description": "Extension Nuvio pour vegamovies",
+      "description": "Extension synchronisée pour vegamovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -945,7 +945,7 @@
     {
       "id": "videasy_nissay",
       "name": "VIDEASY",
-      "description": "Extension Nuvio pour videasy",
+      "description": "Extension synchronisée pour videasy",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -965,7 +965,7 @@
     {
       "id": "vidlink_nissay",
       "name": "VIDLINK",
-      "description": "Extension Nuvio pour vidlink",
+      "description": "Extension synchronisée pour vidlink",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -985,7 +985,7 @@
     {
       "id": "vidsrc_nissay",
       "name": "VIDSRC",
-      "description": "Extension Nuvio pour vidsrc",
+      "description": "Extension synchronisée pour vidsrc",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1005,7 +1005,7 @@
     {
       "id": "vidsync_nissay",
       "name": "VIDSYNC",
-      "description": "Extension Nuvio pour vidsync",
+      "description": "Extension synchronisée pour vidsync",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1025,7 +1025,7 @@
     {
       "id": "vixsrc_nissay",
       "name": "VIXSRC",
-      "description": "Extension Nuvio pour vixsrc",
+      "description": "Extension synchronisée pour vixsrc",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1045,7 +1045,7 @@
     {
       "id": "xpass_nissay",
       "name": "XPASS",
-      "description": "Extension Nuvio pour xpass",
+      "description": "Extension synchronisée pour xpass",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
@@ -1065,7 +1065,7 @@
     {
       "id": "zinkmovies_nissay",
       "name": "ZINKMOVIES",
-      "description": "Extension Nuvio pour zinkmovies",
+      "description": "Extension synchronisée pour zinkmovies",
       "version": "1.0.0",
       "author": "Nissay",
       "supportedTypes": [
