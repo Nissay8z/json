@@ -18,10 +18,9 @@ jobs:
 
       - name: Mettre à jour les providers
         run: |
-          node << 'EOF'
+          node --input-type=commonjs << 'EOF'
           const fs = require('fs');
           const path = require('path');
-          const https = require('https');
 
           // ----- 1) Fonction pour extraire un domaine depuis un wiki -----
           async function fetchDomainFromWiki(url) {
@@ -52,7 +51,7 @@ jobs:
             ...(sources.direct_tv || [])
           ];
 
-          // ----- 3) Mise à jour des providers -----
+          // ----- 3) Mapping provider -> fichier + variables + wiki -----
           const providerMap = [
             { 
               nameMatch: /purstream/i, 
@@ -84,17 +83,17 @@ jobs:
             for (const provider of providerMap) {
               if (provider.nameMatch.test(nom)) {
                 let tld = null;
-                // Si on a un wikiUrl, on extrait le domaine réel
+
+                // Si le provider a un wiki, on extrait le domaine réel
                 if (provider.wikiUrl) {
                   const domain = await fetchDomainFromWiki(provider.wikiUrl);
                   if (domain) {
-                    // Extraire le TLD (dernière partie)
                     const parts = domain.split('.');
-                    tld = parts.slice(1).join('.');
+                    tld = parts.slice(1).join('.');  // ex: toflix.fit -> fit | purstream.cx -> cx
                     console.log(`🔍 ${provider.file} : domaine extrait = ${domain} → TLD = ${tld}`);
                   } else {
-                    console.warn(`⚠️ Aucun domaine trouvé pour ${nom}, on garde l’URL de sources.json`);
-                    // Fallback : extraire TLD depuis l'URL du wikipédia
+                    console.warn(`⚠️ Aucun domaine trouvé via wiki pour ${nom}, fallback sur sources.json`);
+                    // Fallback : extraire TLD depuis l'URL de sources.json
                     if (item.url) {
                       try {
                         const host = new URL(item.url).hostname;
@@ -104,7 +103,7 @@ jobs:
                     }
                   }
                 } else {
-                  // Pour les autres providers, on utilise l'URL de sources.json
+                  // Providers sans wiki : on utilise l'URL de sources.json
                   if (item.url) {
                     try {
                       const host = new URL(item.url).hostname;
@@ -115,13 +114,13 @@ jobs:
                 }
 
                 if (!tld) {
-                  console.warn(`❌ Impossible d’extraire un TLD pour ${nom}`);
+                  console.warn(`❌ Impossible d'extraire un TLD pour ${nom}`);
                   continue;
                 }
 
                 const filePath = provider.file;
                 if (!fs.existsSync(filePath)) {
-                  console.warn(`⚠️ Fichier ${filePath} introuvable`);
+                  console.warn(`⚠️ Fichier ${filePath} introuvable, sautée`);
                   continue;
                 }
 
@@ -131,10 +130,38 @@ jobs:
                   fs.writeFileSync(filePath, newContent, 'utf8');
                   console.log(`✅ ${filePath} : ${provider.varName} = '${tld}'`);
                   modifiedCount++;
+                } else {
+                  console.log(`ℹ️ ${filePath} : aucune modification nécessaire`);
                 }
                 break;
               }
             }
+          }
+
+          // Optionnel : régénérer manifest.json
+          if (fs.existsSync('providers')) {
+            const files = fs.readdirSync('providers').filter(f => f.endsWith('.js'));
+            const manifest = {
+              name: "Catalogue Ultime Nissay",
+              version: "1.0.0",
+              scrapers: files.map(file => {
+                const id = file.replace('.js', '');
+                return {
+                  id: `${id}_nissay`,
+                  name: id.toUpperCase(),
+                  description: `Extension synchronisée pour ${id}`,
+                  version: "1.0.0",
+                  author: "Nissay",
+                  supportedTypes: ["movie", "tv"],
+                  filename: `providers/${file}`,
+                  enabled: true,
+                  formats: ["mp4", "m3u8"],
+                  contentLanguage: ["fr"]
+                };
+              })
+            };
+            fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
+            console.log(`📄 manifest.json régénéré (${files.length} scrapers)`);
           }
 
           console.log(`\n🚀 Terminé. ${modifiedCount} fichier(s) provider modifié(s).`);
