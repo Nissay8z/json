@@ -1,0 +1,22 @@
+name: Forcer mise à jour manifest.json
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Générer manifest.json
+        run: node scripts/gen-manifest.js
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "📄 Met à jour manifest.json"
+          git push
