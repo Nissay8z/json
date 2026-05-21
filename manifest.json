@@ -692,6 +692,19 @@
       "enabled": true
     },
     {
+      "id": "wiflix_nissay",
+      "name": "WIFLIX",
+      "description": "Extension pour wiflix",
+      "version": "1.0.0",
+      "author": "Nissay",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/wiflix.js",
+      "enabled": true
+    },
+    {
       "id": "xpass_nissay",
       "name": "XPASS",
       "description": "Extension pour xpass",
