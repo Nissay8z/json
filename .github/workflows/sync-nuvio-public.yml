@@ -1,0 +1,55 @@
+name: Refresh NISSKENZI Nuvio providers (public)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync_nuvio_public.py'
+      - '.github/workflows/sync-nuvio-public.yml'
+
+permissions:
+  contents: write
+concurrency:
+  group: nisskenzi-nuvio-public
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sync Gowaru, Snixi92 and four selected All-in-One providers
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m py_compile scripts/sync_nuvio_public.py
+          python scripts/sync_nuvio_public.py
+      - name: Commit updated manifest and JavaScript mirrors
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A nuvio/manifest.json nuvio/providers
+          if git diff --cached --quiet; then
+            echo 'Provider sources unchanged; no new commit needed.'
+            exit 0
+          fi
+          git commit -m 'chore: refresh public Nuvio JS plugins from upstream'
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo 'Public Nuvio manifest refreshed.'
+              exit 0
+            fi
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo 'Unable to publish synchronized plugins after retries.' >&2
+          exit 1
