@@ -1,7 +1,98 @@
 {
   "name": "NISSKENZI · Nuvio Providers (Gowaru / Snixi92 / All-in-One FR)",
-  "version": "1.0.2026102701",
+  "version": "1.0.4127697710",
   "scrapers": [
+    {
+      "id": "aio-anime-sama",
+      "name": "🐍 Anime-Sama · All-in-One",
+      "description": "Watch AnimeSama France",
+      "version": "1.1.27",
+      "author": "Gowaru",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/aio/anime-sama.js",
+      "enabled": true,
+      "hasSettings": true,
+      "formats": [
+        "mp4",
+        "mkv"
+      ],
+      "logo": "https://i.postimg.cc/tgYt2pYG/animesama.png",
+      "contentLanguage": [
+        "fr"
+      ]
+    },
+    {
+      "id": "aio-movix",
+      "name": "Movix VF · All-in-One",
+      "description": "Movies and TV series in English & French (dubbed/subtitled)",
+      "version": "1.0.0",
+      "author": "wooodyhood",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/aio/movix.js",
+      "enabled": true,
+      "hasSettings": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/XYrPQm87/movix.png",
+      "contentLanguage": [
+        "en",
+        "fr"
+      ]
+    },
+    {
+      "id": "aio-nakios",
+      "name": "Nakios · All-in-One",
+      "description": "Mainly French, Some English & 4K Quality",
+      "version": "3.8.2",
+      "author": "Wooodyhood",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/aio/nakios.js",
+      "enabled": true,
+      "hasSettings": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/nLwY1pJB/nakios.png",
+      "contentLanguage": [
+        "fr",
+        "en"
+      ]
+    },
+    {
+      "id": "aio-purstream",
+      "name": "Purstream · All-in-One",
+      "description": "Films and series in French (VF) / subtitled French (VOSTFR) / multi-language (MULTI) from purstream.art.",
+      "version": "3.0.0",
+      "author": "wooodyhood",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/aio/purstream.js",
+      "enabled": true,
+      "hasSettings": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/7L5shxmC/purstream.png",
+      "contentLanguage": [
+        "en",
+        "fr"
+      ]
+    },
     {
       "id": "gwr-adkami",
       "name": "ADKami · Gowaru",
@@ -12,17 +103,18 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/adkami.js",
+      "filename": "providers/gwr/adkami.js",
       "enabled": true,
+      "logo": "https://www.adkami.com/favicon.ico",
       "contentLanguage": [
         "fr",
         "ja"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://www.adkami.com/favicon.ico"
+      "categories": [
+        "anime",
+        "tv",
+        "movies"
+      ]
     },
     {
       "id": "gwr-anime-sama",
@@ -34,8 +126,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/anime-sama.js",
+      "filename": "providers/gwr/anime-sama.js",
       "enabled": true,
+      "logo": "https://raw.githubusercontent.com/Anime-Sama/IMG/img/autres/logo.png",
       "contentLanguage": [
         "fr"
       ],
@@ -43,7 +136,6 @@
         "mp4",
         "mkv"
       ],
-      "logo": "https://raw.githubusercontent.com/Anime-Sama/IMG/img/autres/logo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -58,15 +150,15 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/anime-ultime.js",
+      "filename": "providers/gwr/anime-ultime.js",
       "enabled": true,
+      "logo": "https://v5.anime-ultime.net/static/favicon/android-icon-192x192.png",
       "contentLanguage": [
         "fr"
       ],
       "formats": [
         "mp4"
       ],
-      "logo": "https://v5.anime-ultime.net/static/favicon/android-icon-192x192.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -81,8 +173,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/animesama-co.js",
+      "filename": "providers/gwr/animesama-co.js",
       "enabled": true,
+      "logo": "https://raw.githubusercontent.com/Anime-Sama/IMG/img/autres/logo.png",
       "contentLanguage": [
         "fr"
       ],
@@ -90,7 +183,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://raw.githubusercontent.com/Anime-Sama/IMG/img/autres/logo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -105,17 +197,18 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/animesite.js",
+      "filename": "providers/gwr/animesite.js",
       "enabled": true,
+      "logo": "https://animesite.fr/anime-site-icon.ico",
       "contentLanguage": [
         "fr",
         "ja"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://animesite.fr/anime-site-icon.ico"
+      "categories": [
+        "anime",
+        "tv",
+        "movies"
+      ]
     },
     {
       "id": "gwr-animesultra",
@@ -127,8 +220,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/animesultra.js",
+      "filename": "providers/gwr/animesultra.js",
       "enabled": true,
+      "logo": "https://animesultra.org/templates/animeultra/images/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -136,7 +230,6 @@
         "mp4",
         "mkv"
       ],
-      "logo": "https://animesultra.org/templates/animeultra/images/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -150,8 +243,9 @@
       "supportedTypes": [
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/animevost-fr.js",
+      "filename": "providers/gwr/animevost-fr.js",
       "enabled": true,
+      "logo": "https://animevost.fr/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -159,7 +253,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://animevost.fr/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -174,8 +267,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/animevostfr.js",
+      "filename": "providers/gwr/animevostfr.js",
       "enabled": true,
+      "logo": "https://animevostfr.org/wp-content/uploads/luffy-icon.jpg",
       "contentLanguage": [
         "fr"
       ],
@@ -183,7 +277,6 @@
         "mp4",
         "mkv"
       ],
-      "logo": "https://animevostfr.org/wp-content/uploads/luffy-icon.jpg",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -198,8 +291,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/animoflix.js",
+      "filename": "providers/gwr/animoflix.js",
       "enabled": true,
+      "logo": "https://animoflix.to/img/logo.png",
       "contentLanguage": [
         "fr"
       ],
@@ -207,7 +301,6 @@
         "mp4",
         "mkv"
       ],
-      "logo": "https://animoflix.to/img/logo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -222,8 +315,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/aniverse.js",
+      "filename": "providers/gwr/aniverse.js",
       "enabled": true,
+      "logo": "https://aniverse.fr/assets/icons/logo.png",
       "contentLanguage": [
         "fr",
         "ja"
@@ -231,7 +325,6 @@
       "formats": [
         "m3u8"
       ],
-      "logo": "https://aniverse.fr/assets/icons/logo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -246,8 +339,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/coflix.js",
+      "filename": "providers/gwr/coflix.js",
       "enabled": true,
+      "logo": "https://coflix.wiki/images/favicon-coflix.png",
       "contentLanguage": [
         "fr"
       ],
@@ -255,7 +349,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://coflix.wiki/images/favicon-coflix.png",
       "limited": false,
       "supportsExternalPlayer": false
     },
@@ -268,8 +361,9 @@
       "supportedTypes": [
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/dulourd.js",
+      "filename": "providers/gwr/dulourd.js",
       "enabled": true,
+      "logo": "https://www.dulourd.hair/templates/dulourd2/icon/favicon.png",
       "contentLanguage": [
         "fr"
       ],
@@ -277,7 +371,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://www.dulourd.hair/templates/dulourd2/icon/favicon.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -292,8 +385,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/flemmix.js",
+      "filename": "providers/gwr/flemmix.js",
       "enabled": true,
+      "logo": "https://flemmix.me/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -301,7 +395,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://flemmix.me/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -316,8 +409,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/franime.js",
+      "filename": "providers/gwr/franime.js",
       "enabled": true,
+      "logo": "https://franime.fr/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -325,7 +419,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://franime.fr/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -340,8 +433,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/french-anime.js",
+      "filename": "providers/gwr/french-anime.js",
       "enabled": true,
+      "logo": "https://www.french-anime.fr/fav/favicon-32x32.png",
       "contentLanguage": [
         "fr"
       ],
@@ -349,7 +443,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://www.french-anime.fr/fav/favicon-32x32.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -364,8 +457,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/french-manga.js",
+      "filename": "providers/gwr/french-manga.js",
       "enabled": true,
+      "logo": "https://w16.french-manga.net/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -373,7 +467,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://w16.french-manga.net/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -383,13 +476,15 @@
       "name": "Frenchstream · Gowaru",
       "description": "Films, séries et animes en VF et VOSTFR (recherche exacte par tag TMDB, réglages langue/hosts — Mobile uniquement).",
       "version": "2.0.23",
+      "hasSettings": true,
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/frenchstream.js",
+      "filename": "providers/gwr/frenchstream.js",
       "enabled": true,
+      "logo": "https://french-stream.one/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -398,8 +493,6 @@
         "mkv",
         "m3u8"
       ],
-      "logo": "https://french-stream.one/favicon.ico",
-      "hasSettings": true,
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
@@ -414,8 +507,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/fullanime.js",
+      "filename": "providers/gwr/fullanime.js",
       "enabled": true,
+      "logo": "https://www.fullanime.fr/assets/img/MeteorLogo.png",
       "contentLanguage": [
         "fr"
       ],
@@ -423,7 +517,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://www.fullanime.fr/assets/img/MeteorLogo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -437,29 +530,31 @@
       "supportedTypes": [
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/jetanimes.js",
+      "filename": "providers/gwr/jetanimes.js",
       "enabled": true,
+      "logo": "https://on.jetanimes.com/wp-content/uploads/2023/11/cropped-favicon-32x32-1.png",
       "contentLanguage": [
         "ja"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://on.jetanimes.com/wp-content/uploads/2023/11/cropped-favicon-32x32-1.png"
+      "categories": [
+        "anime",
+        "tv"
+      ]
     },
     {
       "id": "gwr-movix",
       "name": "Movix · Gowaru",
       "description": "Films, Séries et Animes en VF et VOSTFR.",
       "version": "0.1.5",
+      "hasSettings": true,
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/movix.js",
+      "filename": "providers/gwr/movix.js",
       "enabled": true,
+      "logo": "https://movix.fun/movix.png",
       "contentLanguage": [
         "fr"
       ],
@@ -468,8 +563,6 @@
         "mkv",
         "m3u8"
       ],
-      "logo": "https://movix.fun/movix.png",
-      "hasSettings": true,
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
@@ -484,8 +577,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/mugiwarastream.js",
+      "filename": "providers/gwr/mugiwarastream.js",
       "enabled": true,
+      "logo": "https://raw.githubusercontent.com/NOUSSS/mugiwara-no-streaming-images/main/Logo.png",
       "contentLanguage": [
         "fr"
       ],
@@ -494,7 +588,6 @@
         "mkv",
         "m3u8"
       ],
-      "logo": "https://raw.githubusercontent.com/NOUSSS/mugiwara-no-streaming-images/main/Logo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -509,8 +602,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/nakios.js",
+      "filename": "providers/gwr/nakios.js",
       "enabled": true,
+      "logo": "https://nakios.store/favicon.png",
       "contentLanguage": [
         "fr",
         "en"
@@ -518,7 +612,6 @@
       "formats": [
         "mp4"
       ],
-      "logo": "https://nakios.store/favicon.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -533,8 +626,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/neko-sama.js",
+      "filename": "providers/gwr/neko-sama.js",
       "enabled": true,
+      "logo": "https://animes-sama.su/wp-content/uploads/2026/04/Anime-sama-logo-icon.webp",
       "contentLanguage": [
         "fr"
       ],
@@ -542,7 +636,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://animes-sama.su/wp-content/uploads/2026/04/Anime-sama-logo-icon.webp",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -557,8 +650,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/papadustream.js",
+      "filename": "providers/gwr/papadustream.js",
       "enabled": true,
+      "logo": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/assets/papadustream.png",
       "contentLanguage": [
         "fr",
         "en"
@@ -566,7 +660,6 @@
       "formats": [
         "m3u8"
       ],
-      "logo": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/assets/papadustream.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -581,8 +674,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/sekai.js",
+      "filename": "providers/gwr/sekai.js",
       "enabled": true,
+      "logo": "https://sekai.one/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -590,7 +684,6 @@
         "mp4",
         "mkv"
       ],
-      "logo": "https://sekai.one/favicon.ico",
       "limited": false,
       "disabledPlatforms": [
         "tv"
@@ -607,17 +700,18 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/senanimes.js",
+      "filename": "providers/gwr/senanimes.js",
       "enabled": true,
+      "logo": "https://senanimes.com/icon.svg",
       "contentLanguage": [
         "fr",
         "ja"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://senanimes.com/icon.svg"
+      "categories": [
+        "anime",
+        "tv",
+        "movies"
+      ]
     },
     {
       "id": "gwr-streamzo",
@@ -629,15 +723,15 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/streamzo.js",
+      "filename": "providers/gwr/streamzo.js",
       "enabled": true,
+      "logo": "https://streamzo.fr/static/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
       "formats": [
         "m3u8"
       ],
-      "logo": "https://streamzo.fr/static/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -652,8 +746,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/voiranime.js",
+      "filename": "providers/gwr/voiranime.js",
       "enabled": true,
+      "logo": "https://lh3.googleusercontent.com/728eE_dzDC7HWN9Cs2eGkQg4Vlk1CqCJj3T8aAQs50srttRUl6pVmmD0O4t1Zxn4fdiVpPzcoPAzNS2EuUre29Dulw=s60",
       "contentLanguage": [
         "fr"
       ],
@@ -662,7 +757,6 @@
         "mkv",
         "m3u8"
       ],
-      "logo": "https://lh3.googleusercontent.com/728eE_dzDC7HWN9Cs2eGkQg4Vlk1CqCJj3T8aAQs50srttRUl6pVmmD0O4t1Zxn4fdiVpPzcoPAzNS2EuUre29Dulw=s60",
       "limited": false,
       "disabledPlatforms": [
         "tv"
@@ -679,17 +773,18 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/voiranime-be.js",
+      "filename": "providers/gwr/voiranime-be.js",
       "enabled": true,
+      "logo": "https://voiranime.be/wp-content/uploads/2024/01/favicon.png",
       "contentLanguage": [
         "fr",
         "ja"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://voiranime.be/wp-content/uploads/2024/01/favicon.png"
+      "categories": [
+        "anime",
+        "tv",
+        "movies"
+      ]
     },
     {
       "id": "gwr-voiranime-homes",
@@ -701,8 +796,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/voiranime-homes.js",
+      "filename": "providers/gwr/voiranime-homes.js",
       "enabled": true,
+      "logo": "https://voiranime.homes/img/icon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -710,7 +806,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://voiranime.homes/img/icon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -725,8 +820,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/voiranime-one.js",
+      "filename": "providers/gwr/voiranime-one.js",
       "enabled": true,
+      "logo": "https://voiranime.one/assets/voiranime-logo.svg",
       "contentLanguage": [
         "fr"
       ],
@@ -734,7 +830,10 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://voiranime.one/assets/voiranime-logo.svg"
+      "catalogs": [],
+      "stremioAddonsConfig": {
+        "addonCatalogs": []
+      }
     },
     {
       "id": "gwr-voiranime-rip",
@@ -746,8 +845,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/voiranime-rip.js",
+      "filename": "providers/gwr/voiranime-rip.js",
       "enabled": true,
+      "logo": "https://voiranime.rip/img/icon.png",
       "contentLanguage": [
         "fr"
       ],
@@ -755,7 +855,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://voiranime.rip/img/icon.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -770,8 +869,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/voirdrama.js",
+      "filename": "providers/gwr/voirdrama.js",
       "enabled": true,
+      "logo": "https://voirdrama.to/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -779,7 +879,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://voirdrama.to/favicon.ico",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -794,8 +893,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/vostfree.js",
+      "filename": "providers/gwr/vostfree.js",
       "enabled": true,
+      "logo": "https://vostfree.ws/templates/Animix/images/logo.png",
       "contentLanguage": [
         "fr"
       ],
@@ -803,7 +903,6 @@
         "mp4",
         "mkv"
       ],
-      "logo": "https://vostfree.ws/templates/Animix/images/logo.png",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -818,15 +917,15 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/waveanime.js",
+      "filename": "providers/gwr/waveanime.js",
       "enabled": true,
+      "logo": "https://waveanime.fr/assets/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
       "formats": [
         "dash"
       ],
-      "logo": "https://waveanime.fr/assets/favicon.ico",
       "limited": true,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -836,13 +935,15 @@
       "name": "Webflix · Gowaru",
       "description": "Films et séries VF/VOSTFR via webflix.art (MP4 directs FastFlux + lecteurs Frembed/Zenix).",
       "version": "0.1.4",
+      "hasSettings": true,
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/webflix.js",
+      "filename": "providers/gwr/webflix.js",
       "enabled": true,
+      "logo": "https://webflix.art/favicon.ico",
       "contentLanguage": [
         "fr"
       ],
@@ -850,8 +951,6 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://webflix.art/favicon.ico",
-      "hasSettings": true,
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
@@ -866,8 +965,9 @@
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Gowaru/gowaru-nuvio-providers/main/providers/wookafr.js",
+      "filename": "providers/gwr/wookafr.js",
       "enabled": true,
+      "logo": "https://wookafr.center/wp-content/uploads/2023/08/icon-192x192-1.webp",
       "contentLanguage": [
         "fr"
       ],
@@ -875,441 +975,281 @@
         "mp4",
         "m3u8"
       ],
-      "logo": "https://wookafr.center/wp-content/uploads/2023/08/icon-192x192-1.webp",
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": false
     },
     {
-      "id": "aio-anime-sama",
-      "name": "🐍 Anime-Sama · All-in-One",
-      "description": "Watch AnimeSama France",
-      "version": "1.1.27",
-      "author": "Gowaru",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/main/providers/anime-sama.js",
-      "enabled": true,
-      "contentLanguage": [
-        "fr"
-      ],
-      "formats": [
-        "mp4",
-        "mkv"
-      ],
-      "logo": "https://i.postimg.cc/tgYt2pYG/animesama.png",
-      "hasSettings": true
-    },
-    {
-      "id": "aio-movix",
-      "name": "Movix VF · All-in-One",
-      "description": "Movies and TV series in English & French (dubbed/subtitled)",
-      "version": "1.0.0",
-      "author": "wooodyhood",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/main/providers/movix.js",
-      "enabled": true,
-      "contentLanguage": [
-        "en",
-        "fr"
-      ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://i.postimg.cc/XYrPQm87/movix.png",
-      "hasSettings": true
-    },
-    {
-      "id": "aio-nakios",
-      "name": "Nakios · All-in-One",
-      "description": "Mainly French, Some English & 4K Quality",
-      "version": "3.8.2",
-      "author": "Wooodyhood",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/main/providers/nakios.js",
-      "enabled": true,
-      "contentLanguage": [
-        "fr",
-        "en"
-      ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://i.postimg.cc/nLwY1pJB/nakios.png",
-      "hasSettings": true
-    },
-    {
-      "id": "aio-purstream",
-      "name": "Purstream · All-in-One",
-      "description": "Films and series in French (VF) / subtitled French (VOSTFR) / multi-language (MULTI) from purstream.art.",
-      "version": "3.0.0",
-      "author": "wooodyhood",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
-      "filename": "https://raw.githubusercontent.com/NuvioPlugin/All-in-One-Nuvio/main/providers/purstream.js",
-      "enabled": true,
-      "contentLanguage": [
-        "en",
-        "fr"
-      ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ],
-      "logo": "https://i.postimg.cc/7L5shxmC/purstream.png",
-      "hasSettings": true
-    },
-    {
       "id": "snx-anime-sama",
-      "name": "anime-sama · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Anime Sama · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/anime-sama.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/anime-sama.js"
     },
     {
       "id": "snx-cinepulse",
-      "name": "cinepulse · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Cinepulse · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/cinepulse.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/cinepulse.js"
     },
     {
       "id": "snx-coflix",
-      "name": "coflix · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Coflix · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/coflix.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/coflix.js"
     },
     {
       "id": "snx-french-anime",
-      "name": "french-anime · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "French Anime · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/french-anime.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/french-anime.js"
     },
     {
       "id": "snx-frenchstream",
-      "name": "frenchstream · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Frenchstream · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/frenchstream.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/frenchstream.js"
     },
     {
       "id": "snx-movix",
-      "name": "movix · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Movix · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/movix.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/movix.js"
     },
     {
       "id": "snx-nakastream",
-      "name": "nakastream · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Nakastream · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/nakastream.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/nakastream.js"
     },
     {
       "id": "snx-nakios",
-      "name": "nakios · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Nakios · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/nakios.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/nakios.js"
     },
     {
       "id": "snx-nebula",
-      "name": "nebula · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Nebula · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/nebula.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/nebula.js"
     },
     {
       "id": "snx-papadustream",
-      "name": "papadustream · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Papadustream · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/papadustream.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/papadustream.js"
     },
     {
       "id": "snx-popflix",
-      "name": "popflix · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Popflix · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/popflix.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/popflix.js"
     },
     {
       "id": "snx-purstream",
-      "name": "purstream · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Purstream · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/purstream.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/purstream.js"
     },
     {
       "id": "snx-southtv",
-      "name": "southtv · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Southtv · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/southtv.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/southtv.js"
     },
     {
       "id": "snx-streamflix",
-      "name": "streamflix · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Streamflix · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/streamflix.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/streamflix.js"
     },
     {
       "id": "snx-toflix",
-      "name": "toflix · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Toflix · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/toflix.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/toflix.js"
     },
     {
       "id": "snx-vostfree",
-      "name": "vostfree · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Vostfree · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/vostfree.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/vostfree.js"
     },
     {
       "id": "snx-vstream",
-      "name": "vstream · Snixi92",
-      "description": "Mirrored Nuvio JavaScript provider from Snixi92/nuvio-french-providers",
+      "name": "Vstream · Snixi92",
+      "description": "QuickJS provider from Snixi92",
       "version": "1.0.0",
       "author": "Snixi92",
       "supportedTypes": [
         "movie",
         "tv"
       ],
-      "filename": "https://raw.githubusercontent.com/Snixi92/nuvio-french-providers/main/providers/vstream.js",
       "enabled": true,
       "contentLanguage": [
         "fr"
       ],
-      "formats": [
-        "mp4",
-        "m3u8"
-      ]
+      "filename": "providers/snx/vstream.js"
     }
   ]
 }
