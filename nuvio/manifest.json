@@ -1,6 +1,6 @@
 {
   "name": "NISSKENZI · Nuvio Providers (Gowaru / Snixi92 / All-in-One FR)",
-  "version": "1.0.1067664735",
+  "version": "1.0.4000070712",
   "scrapers": [
     {
       "id": "aio-anime-sama",
@@ -166,8 +166,8 @@
     {
       "id": "gwr-animesama-co",
       "name": "AnimeSama.co (DLE Mirror) · Gowaru",
-      "description": "Animes VF et VOSTFR en streaming sur AnimeSama.co (miroir DLE).",
-      "version": "1.0.14",
+      "description": "Animes VF et VOSTFR sur AnimeSama.co (miroir DLE) — schéma /saison-saison-N/ + garde de défacement.",
+      "version": "1.0.15",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -190,8 +190,8 @@
     {
       "id": "gwr-animesite",
       "name": "AnimeSite · Gowaru",
-      "description": "Animes VF et VOSTFR sur AnimeSite (Next.js/RSC, API /api/stream/token par cookies de session, 5 lecteurs par épisode : Sibnet, Byse HLS, Sendvid ; validation saison/épisode via JSON-LD, catalogue complet via sitemap).",
-      "version": "0.1.4",
+      "description": "Animes VF et VOSTFR sur AnimeSite (Next.js/RSC, API /api/stream/token par cookies de session, 5 lecteurs par épisode : Sibnet, Byse HLS, Sendvid, Ansembed, Uqload ; langue détectée sur la page de chaque embed, validation saison/épisode via JSON-LD, catalogue complet via sitemap, repli titre FR via TMDB).",
+      "version": "0.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -214,7 +214,7 @@
       "id": "gwr-animesultra",
       "name": "AnimesUltra · Gowaru",
       "description": "Animes en streaming VOSTFR et VF.",
-      "version": "1.0.39",
+      "version": "1.0.40",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -237,8 +237,8 @@
     {
       "id": "gwr-animevost-fr",
       "name": "AnimeVOST.fr · Gowaru",
-      "description": "Anime VOSTFR en streaming via animevost.fr (HLS gupload, catalogue en croissance).",
-      "version": "0.1.3",
+      "description": "Anime VOSTFR en streaming via animevost.fr (sitemap + HLS gupload, catalogue en croissance).",
+      "version": "0.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "tv"
@@ -261,7 +261,7 @@
       "id": "gwr-animevostfr",
       "name": "AnimeVOSTFR · Gowaru",
       "description": "Animes VF et VOSTFR en streaming gratuit sur AnimeVOSTFR.",
-      "version": "1.1.54",
+      "version": "1.1.55",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -308,8 +308,8 @@
     {
       "id": "gwr-aniverse",
       "name": "Aniverse · Gowaru",
-      "description": "Animes VF et VOSTFR sur aniverse.fr (Next.js, HLS AES-128 CDN onefy avec JWT Bearer obligatoire, sous-titres FR VTT, anti-décalage épisodes : validation numérique + mapping par titres TMDB pour specials/OVA S0 et numérotations absolues type One Piece).",
-      "version": "0.2.2",
+      "description": "Animes VF et VOSTFR sur aniverse.fr (Next.js, HLS AES-128 CDN onefy, sous-titres FR VTT absolus, sub+dub interrogés en parallèle, anti-décalage épisodes : validation numérique + mapping par titres TMDB pour specials/OVA S0 et numérotations absolues type One Piece).",
+      "version": "0.3.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -332,8 +332,8 @@
     {
       "id": "gwr-coflix",
       "name": "Coflix · Gowaru",
-      "description": "Films et séries en streaming VF/VOSTFR sur Coflix.wiki (API AJAX, lecteurs Vidzy/Uqload/FSVID).",
-      "version": "2.0.5",
+      "description": "Films et séries VF/VOSTFR de Coflix (domaine résolu à l'exécution : coflix.gold, repli coflix.wiki ; API AJAX suggest/list-episode/player, lecteurs Vidzy/Uqload/Byse, filtrage du CDN tnmr.org en 403).",
+      "version": "2.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -341,7 +341,7 @@
       ],
       "filename": "providers/gwr/coflix.js",
       "enabled": true,
-      "logo": "https://coflix.wiki/images/favicon-coflix.png",
+      "logo": "https://coflix.gold/images/favicon-coflix.png",
       "contentLanguage": [
         "fr"
       ],
@@ -350,7 +350,8 @@
         "m3u8"
       ],
       "limited": false,
-      "supportsExternalPlayer": false
+      "supportsExternalPlayer": false,
+      "hasSettings": true
     },
     {
       "id": "gwr-dulourd",
@@ -426,8 +427,8 @@
     {
       "id": "gwr-french-anime",
       "name": "French-Anime · Gowaru",
-      "description": "Catalogue anime VF/VOSTFR de french-anime (backend coflix.wiki, lecteurs Vidzy/Luluvdo/Uqload).",
-      "version": "0.1.3",
+      "description": "Catalogue anime VF/VOSTFR de french-anime (canal direct DLE + backend coflix.gold : domaine résolu dynamiquement, lecteurs Vidzy/Uqload/Byse, filtrage du CDN tnmr.org qui répond 403, gardes film/saison pour ne jamais servir un autre épisode, repli titres FR TMDB).",
+      "version": "0.3.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -445,7 +446,8 @@
       ],
       "limited": false,
       "disabledPlatforms": [],
-      "supportsExternalPlayer": false
+      "supportsExternalPlayer": false,
+      "hasSettings": true
     },
     {
       "id": "gwr-french-manga",
@@ -789,8 +791,8 @@
     {
       "id": "gwr-voiranime-homes",
       "name": "VoirAnime.homes · Gowaru",
-      "description": "Animes VF et VOSTFR en streaming sur voiranime.homes (moteur DLE, miroir French-Manga).",
-      "version": "0.1.3",
+      "description": "Animes VF et VOSTFR sur voiranime.homes (moteur DLE, miroir French-Manga) : recherche AJAX paginée avec repli titres FR TMDB, gardes saison/film, lecteurs Vidzy/Uqload, filtrage des CDN morts (vidhsareup sans DNS, tnmr.org en 403).",
+      "version": "0.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
