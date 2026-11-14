@@ -1,6 +1,6 @@
 {
   "name": "NISSKENZI · Nuvio Providers (Gowaru / Snixi92 / All-in-One FR)",
-  "version": "1.0.4000070712",
+  "version": "1.0.1606572408",
   "scrapers": [
     {
       "id": "aio-anime-sama",
@@ -119,8 +119,8 @@
     {
       "id": "gwr-anime-sama",
       "name": "Anime-Sama · Gowaru",
-      "description": "Un des plus gros catalogues français, très actif, sorties du jour.",
-      "version": "1.1.61",
+      "description": "Un des plus gros catalogues français, très actif, sorties du jour (animes-sama.fr : lecteurs signés côté serveur, VOSTFR/VF/VF1/VA…).",
+      "version": "1.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -527,7 +527,7 @@
       "id": "gwr-jetanimes",
       "name": "Jetanimes · Gowaru",
       "description": "Animes VOSTFR sur Jetanimes (gros catalogue, ~25 000 épisodes, joueurs VidHide/Byse résolus nativement, sans crypto côté runtime).",
-      "version": "0.1.3",
+      "version": "0.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "tv"
@@ -646,7 +646,7 @@
       "id": "gwr-papadustream",
       "name": "Papadustream · Gowaru",
       "description": "Films et séries en streaming HLS via papadustream.club (multi-qualité 360p-1080p, multi-langue).",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -741,8 +741,8 @@
     {
       "id": "gwr-voiranime",
       "name": "VoirAnime · Gowaru",
-      "description": "Un des plus gros catalogues français d'animes.",
-      "version": "1.2.28",
+      "description": "Un des plus gros catalogues français d'animes (VF et VOSTFR) sur voiranime.cx.",
+      "version": "1.3.1",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -792,7 +792,7 @@
       "id": "gwr-voiranime-homes",
       "name": "VoirAnime.homes · Gowaru",
       "description": "Animes VF et VOSTFR sur voiranime.homes (moteur DLE, miroir French-Manga) : recherche AJAX paginée avec repli titres FR TMDB, gardes saison/film, lecteurs Vidzy/Uqload, filtrage des CDN morts (vidhsareup sans DNS, tnmr.org en 403).",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -800,6 +800,7 @@
       ],
       "filename": "providers/gwr/voiranime-homes.js",
       "enabled": true,
+      "hasSettings": true,
       "logo": "https://voiranime.homes/img/icon.ico",
       "contentLanguage": [
         "fr"
@@ -841,7 +842,7 @@
       "id": "gwr-voiranime-rip",
       "name": "VoirAnime.rip · Gowaru",
       "description": "Animes VF et VOSTFR en streaming sur VoirAnime.rip (site DLE).",
-      "version": "1.0.16",
+      "version": "1.0.17",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
