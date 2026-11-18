@@ -1,6 +1,6 @@
 {
   "name": "NISSKENZI · Nuvio Providers (Gowaru / Snixi92 / All-in-One FR)",
-  "version": "1.0.3011197769",
+  "version": "1.0.2091507228",
   "scrapers": [
     {
       "id": "aio-anime-sama",
@@ -94,29 +94,6 @@
       ]
     },
     {
-      "id": "gwr-adkami",
-      "name": "ADKami · Gowaru",
-      "description": "Animes VF et VOSTFR sur ADKami (sondage multi-variantes des pages épisode, lecteurs tiers vidmoly/dood/voe/byse/streamtape, offsets saisonniers TMDB).",
-      "version": "0.1.2",
-      "author": "Gowaru",
-      "supportedTypes": [
-        "movie",
-        "tv"
-      ],
-      "filename": "providers/gwr/adkami.js",
-      "enabled": true,
-      "logo": "https://www.adkami.com/favicon.ico",
-      "contentLanguage": [
-        "fr",
-        "ja"
-      ],
-      "categories": [
-        "anime",
-        "tv",
-        "movies"
-      ]
-    },
-    {
       "id": "gwr-anime-sama",
       "name": "Anime-Sama · Gowaru",
       "description": "Un des plus gros catalogues français, très actif, sorties du jour (animes-sama.fr : lecteurs signés côté serveur, VOSTFR/VF/VF1/VA…).",
@@ -166,8 +143,8 @@
     {
       "id": "gwr-animesama-co",
       "name": "AnimeSama.co (DLE Mirror) · Gowaru",
-      "description": "Animes VF et VOSTFR sur AnimeSama.co (miroir DLE) — schéma /saison-saison-N/ + garde de défacement.",
-      "version": "1.0.15",
+      "description": "⚠ Désactivé 2026-11 : les pages saison/épisode d'animesama.co sont défacemées par un attaquant (toutes les fiches renvoient une image « pwned », 168 octets) → 0 flux. Le provider repart automatiquement quand le site est restauré.",
+      "version": "1.0.16",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -190,8 +167,8 @@
     {
       "id": "gwr-animesite",
       "name": "AnimeSite · Gowaru",
-      "description": "Animes VF et VOSTFR sur AnimeSite (Next.js/RSC, API /api/stream/token par cookies de session, 5 lecteurs par épisode : Sibnet, Byse HLS, Sendvid, Ansembed, Uqload ; langue détectée sur la page de chaque embed, validation saison/épisode via JSON-LD, catalogue complet via sitemap, repli titre FR via TMDB).",
-      "version": "0.2.0",
+      "description": "Animes et films VF et VOSTFR sur AnimeSite (Next.js/RSC, API /api/stream/token sérialisée pour éviter le rate-limit IP, jusqu'à 10 lecteurs par épisode dont Byse HLS, Sendvid, Sibnet, Ansembed, Uqload, Vidmoly ; langue lue sur le titre de chaque embed, numérotation absolue (One Piece) mappée via JSON-LD + TMDB, validation saison/épisode, catalogue complet via sitemap, repli titre FR via TMDB).",
+      "version": "0.3.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -213,8 +190,8 @@
     {
       "id": "gwr-animesultra",
       "name": "AnimesUltra · Gowaru",
-      "description": "Animes en streaming VOSTFR et VF.",
-      "version": "1.0.40",
+      "description": "⚠ Désactivé 2026-11 : AnimesUltra est hors service. L'origin renvoie 525 (SSL handshake failed) en continu et, quand il répond, le template est cassé (toutes les cartes et le bouton « Regarder » pointent sur « / », aucune page épisode, recherche 404). Aucun lecteur n'est atteignable. Le provider sonde les hôtes connus et repart automatiquement dès que le site est réparé.",
+      "version": "1.0.41",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -401,10 +378,35 @@
       "supportsExternalPlayer": false
     },
     {
+      "id": "gwr-fluneo",
+      "name": "Fluneo · Gowaru",
+      "description": "Anime VF et VOSTFR sur myfluneo.eu (lecteurs vidmoly/VOE/streamtape, saisons et VF par slug, réglages cookie Cloudflare — Mobile uniquement).",
+      "version": "1.0.0",
+      "hasSettings": true,
+      "author": "Gowaru",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/gwr/fluneo.js",
+      "enabled": true,
+      "logo": "https://myfluneo.eu/favicon.ico",
+      "contentLanguage": [
+        "fr"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": false
+    },
+    {
       "id": "gwr-franime",
       "name": "Franime · Gowaru",
-      "description": "Anime VF et VOSTFR en streaming sur franime.fr (catalogue indexé Kitsu).",
-      "version": "0.0.3",
+      "description": "Anime VF et VOSTFR en streaming sur franime.fr (catalogue indexé Kitsu, décodage des liens watch2, numérotation absolue des saisons, résolution des lecteurs Byse et externes).",
+      "version": "0.1.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -815,9 +817,9 @@
     },
     {
       "id": "gwr-voiranime-one",
-      "name": "VoirAnime.one · Gowaru",
-      "description": "Animes VF et VOSTFR en streaming sur le moteur VoirAnime/Anisama (Next.js) — domaines détectés automatiquement (miroirs nomades).",
-      "version": "0.1.4",
+      "name": "VoirAnime (Anisama) · Gowaru",
+      "description": "Animes et films VF/VOSTFR du moteur Anisama (anisama.fr) — recherche /recherche/?q=, fiches /catalogue/{slug}/ (saisons, sagas à numérotation absolue, films), lecteurs ansembed (HLS) ; leurres dood/EarnVids filtrés.",
+      "version": "0.2.0",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
@@ -825,7 +827,7 @@
       ],
       "filename": "providers/gwr/voiranime-one.js",
       "enabled": true,
-      "logo": "https://voiranime.one/assets/voiranime-logo.svg",
+      "logo": "https://anisama.fr/assets/img/favicon/favicon-32x32.png",
       "contentLanguage": [
         "fr"
       ],
@@ -890,7 +892,7 @@
       "id": "gwr-vostfree",
       "name": "Vostfree · Gowaru",
       "description": "Animes VF et VOSTFR : catalogue complet (sitemap) et tous les lecteurs de chaque épisode résolus en direct.",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "author": "Gowaru",
       "supportedTypes": [
         "movie",
